@@ -1,0 +1,25 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Pre-edit backup snapshots (kept locally for rollback, not for distribution)
+.backup/
+
+# Local journal / state (silex / oj-flow)
+.journal/
+.omc/
+.ojflow/
+
+# Secrets — never commit
+.env
+.env.local
+*.key
+*.pem
+credentials.json

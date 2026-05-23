@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Council of 12 &amp; The Solomon Seat — User Guide</title>
+<style>
+  :root {
+    --bg: #0f0f13;
+    --surface: #1a1a24;
+    --surface-2: #22222f;
+    --border: #2a2a3a;
+    --text: #e0e0e8;
+    --text-dim: #8888a0;
+    --gold: #d4a843;
+    --gold-dim: #8a6f2e;
+    --blue: #5b8fd4;
+    --green: #5bad6a;
+    --red: #d45b5b;
+    --purple: #9b7bd4;
+    --cyan: #5bbdd4;
+    --orange: #d49b5b;
+    --phase-ground: #5bad6a;
+    --phase-bound: #5b8fd4;
+    --phase-stress: #d45b5b;
+    --phase-elevate: #9b7bd4;
+    --solomon: #d4a843;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 0;
+  }
+
+  /* --- Hero --- */
+  .hero {
+    background: linear-gradient(135deg, #1a1a24 0%, #1f1a28 50%, #1a1a24 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 40px 60px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 2.8rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .hero h1 span { font-weight: 600; }
+  .hero .subtitle {
+    font-size: 1.15rem;
+    color: var(--text-dim);
+    max-width: 640px;
+    margin: 0 auto 32px;
+  }
+  .hero .version-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border: 1px solid var(--gold-dim);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* --- Layout --- */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-child { border-bottom: none; }
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 28px 0 12px;
+  }
+  p { margin-bottom: 16px; }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* --- Code blocks --- */
+  code {
+    background: var(--surface-2);
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.9em;
+    color: var(--cyan);
+  }
+  pre {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    overflow-x: auto;
+    margin: 16px 0 24px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    color: var(--text);
+  }
+
+  /* --- Cards --- */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  @media (max-width: 700px) { .card-grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--gold-dim); }
+  .card .card-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .card h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .card p {
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    margin-bottom: 0;
+  }
+
+  /* --- Phase colors --- */
+  .phase-ground .card-label, .phase-ground h4 { color: var(--phase-ground); }
+  .phase-bound  .card-label, .phase-bound  h4 { color: var(--phase-bound); }
+  .phase-stress .card-label, .phase-stress h4 { color: var(--phase-stress); }
+  .phase-elevate .card-label,.phase-elevate h4 { color: var(--phase-elevate); }
+  .phase-solomon .card-label,.phase-solomon h4 { color: var(--solomon); }
+
+  .phase-ground  { border-left: 3px solid var(--phase-ground); }
+  .phase-bound   { border-left: 3px solid var(--phase-bound); }
+  .phase-stress  { border-left: 3px solid var(--phase-stress); }
+  .phase-elevate { border-left: 3px solid var(--phase-elevate); }
+  .phase-solomon { border-left: 3px solid var(--solomon); }
+
+  /* --- Mode cards --- */
+  .mode-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  @media (max-width: 700px) { .mode-grid { grid-template-columns: 1fr; } }
+
+  .mode-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+  }
+  .mode-card .mode-letter {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .mode-card .mode-name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .mode-card .mode-time {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+  .mode-card .mode-desc {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    text-align: left;
+  }
+
+  /* --- Tables --- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.9rem;
+  }
+  th {
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--surface);
+    border-bottom: 2px solid var(--border);
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-dim);
+  }
+  tr:hover td { background: var(--surface); }
+
+  /* --- Callouts --- */
+  .callout {
+    background: var(--surface);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 0.95rem;
+  }
+  .callout.tip { border-left-color: var(--green); }
+  .callout.warn { border-left-color: var(--orange); }
+  .callout.important { border-left-color: var(--red); }
+  .callout strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .callout.tip strong { color: var(--green); }
+  .callout.warn strong { color: var(--orange); }
+  .callout.important strong { color: var(--red); }
+
+  /* --- Steps --- */
+  .steps { counter-reset: step; list-style: none; margin: 20px 0; }
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 0 0 24px 56px;
+    border-left: 1px solid var(--border);
+    margin-left: 18px;
+  }
+  .steps li:last-child { border-left: none; padding-bottom: 0; }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: -19px;
+    top: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--surface-2);
+    border: 2px solid var(--gold-dim);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--gold);
+  }
+
+  /* --- Pipeline diagram --- */
+  .pipeline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 24px 0;
+    overflow-x: auto;
+    padding: 8px 0;
+  }
+  .pipeline-stage {
+    flex: 1;
+    min-width: 160px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .pipeline-arrow {
+    font-size: 1.4rem;
+    color: var(--gold-dim);
+    padding: 0 8px;
+    flex-shrink: 0;
+  }
+  .pipeline-stage .stage-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+  .pipeline-stage .stage-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  /* --- Nav --- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15, 15, 19, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 32px;
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+  }
+  nav a {
+    color: var(--text-dim);
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--gold); text-decoration: none; }
+
+  /* --- Footer --- */
+  footer {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-dim);
+    font-size: 0.82rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* --- Seat grid (3-col for phases) --- */
+  .seat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  @media (max-width: 700px) { .seat-row { grid-template-columns: 1fr; } }
+
+  .seat-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .seat-chip .seat-num {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .seat-chip .seat-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin: 2px 0;
+  }
+  .seat-chip .seat-q {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>The <span>Council of 12</span> &amp; The Solomon Seat</h1>
+  <p class="subtitle">A universal 12-lens analysis framework. 12 seats see every angle. Solomon integrates and decides. Works on code reviews, legal filings, career decisions, family conflicts, and everything in between.</p>
+  <span class="version-badge">Skill v1.0</span>
+</div>
+
+<!-- Nav -->
+<nav>
+  <a href="#philosophy">Philosophy</a>
+  <a href="#install">Install</a>
+  <a href="#seats">The 12 Seats</a>
+  <a href="#solomon">Solomon</a>
+  <a href="#modes">Modes</a>
+  <a href="#usage">Usage</a>
+  <a href="#examples">Examples</a>
+  <a href="#best-practices">Best Practices</a>
+  <a href="#files">File Structure</a>
+  <a href="#troubleshooting">Troubleshooting</a>
+</nav>
+
+<div class="container">
+
+<!-- Philosophy -->
+<section id="philosophy">
+  <h2>Philosophy</h2>
+  <p>Two buildings, two philosophies:</p>
+  <div class="card-grid">
+    <div class="card" style="border-left: 3px solid var(--red);">
+      <h4>The American Building</h4>
+      <p>Impressive and tall. Built for the moment. Sometimes a wind or earthquake is devastating.</p>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--green);">
+      <h4>The Japanese Building</h4>
+      <p>Withstands earthquakes because every force is accounted for in advance. Worst-case-first. Built to last.</p>
+    </div>
+  </div>
+  <p>The Council of 12 follows the Japanese approach: 12 lenses that together account for <strong>every force</strong> acting on any situation. Solomon ensures nothing is missed and the solution works for now while being upgradeable to the ideal.</p>
+  <div class="callout">
+    <strong>Core Principle</strong>
+    These are <strong>lenses</strong>, not personalities. Each seat examines a fundamental dimension that any problem touches. The same 12 questions work on a code PR, a legal filing, a career crossroads, or a family decision. No domain presets needed.
+  </div>
+</section>
+
+<!-- Installation -->
+<section id="install">
+  <h2>Installation</h2>
+
+  <h3>Prerequisites</h3>
+  <p>You need <a href="https://github.com/anthropics/claude-code">Claude Code</a> installed.</p>
+
+  <h3>Install Steps</h3>
+  <ol class="steps">
+    <li>
+      <strong>Copy the skill directory</strong>
+      <p>The Council of 12 skill lives at:</p>
+      <pre><code>~/.claude/skills/council-of-12/
+├── SKILL.md              # Orchestrator + Mode A (always loaded)
+├── ground.md             # Seats 1-3: Truth, Context, Systems
+├── bound.md              # Seats 4-6: Ethics, Rules, Human
+├── stress.md             # Seats 7-9: Adversarial, Risk, Resource
+├── elevate.md            # Seats 10-12: Execution, Voiceless, Innovation
+└── templates/
+    └── report.md         # Mode B/C output templates</code></pre>
+      <p>Place all files in <code>~/.claude/skills/council-of-12/</code>. On Windows this resolves to <code>C:\Users\&lt;you&gt;\.claude\skills\council-of-12\</code>.</p>
+    </li>
+    <li>
+      <strong>Verify the skill is discovered</strong>
+      <p>Start a new Claude Code session and type:</p>
+      <pre><code>/council-of-12 test</code></pre>
+      <p>You should see Solomon triage activate. You can also use <code>/solomon</code> or <code>/c12</code> as aliases.</p>
+    </li>
+  </ol>
+
+  <div class="callout tip">
+    <strong>Tip</strong>
+    The skill auto-discovers through Claude Code's skill system. No configuration file changes needed. If <code>/council-of-12</code> doesn't work, ensure the directory is at <code>~/.claude/skills/</code>.
+  </div>
+</section>
+
+<!-- The 12 Seats -->
+<section id="seats">
+  <h2>The 12 Seats</h2>
+  <p>Organized into 4 phases that define the execution order. Each phase establishes a foundation the next phase builds on.</p>
+
+  <h3 style="color: var(--phase-ground);">GROUND — Establish Reality</h3>
+  <p>Before we can judge, constrain, or imagine, we must know what is actually true.</p>
+  <div class="seat-row">
+    <div class="seat-chip phase-ground">
+      <div class="seat-num">Seat 1</div>
+      <div class="seat-name">Truth / Evidence</div>
+      <div class="seat-q">"What do we actually know?"</div>
+    </div>
+    <div class="seat-chip phase-ground">
+      <div class="seat-num">Seat 2</div>
+      <div class="seat-name">Context / Pattern</div>
+      <div class="seat-q">"What led here?"</div>
+    </div>
+    <div class="seat-chip phase-ground">
+      <div class="seat-num">Seat 3</div>
+      <div class="seat-name">Systems / Root Cause</div>
+      <div class="seat-q">"What is the real mechanism?"</div>
+    </div>
+  </div>
+
+  <h3 style="color: var(--phase-bound);">BOUND — Establish Constraints</h3>
+  <p>Reality is established. Now draw the boundaries.</p>
+  <div class="seat-row">
+    <div class="seat-chip phase-bound">
+      <div class="seat-num">Seat 4</div>
+      <div class="seat-name">Ethics / Conscience</div>
+      <div class="seat-q">"Is this right?"</div>
+    </div>
+    <div class="seat-chip phase-bound">
+      <div class="seat-num">Seat 5</div>
+      <div class="seat-name">Rules / Constraints</div>
+      <div class="seat-q">"What are the hard boundaries?"</div>
+    </div>
+    <div class="seat-chip phase-bound">
+      <div class="seat-num">Seat 6</div>
+      <div class="seat-name">Human / Emotional</div>
+      <div class="seat-q">"How will people actually feel?"</div>
+    </div>
+  </div>
+
+  <h3 style="color: var(--phase-stress);">STRESS — Pressure Test</h3>
+  <p>If it survives STRESS, it deserves to exist.</p>
+  <div class="seat-row">
+    <div class="seat-chip phase-stress">
+      <div class="seat-num">Seat 7</div>
+      <div class="seat-name">Adversarial / Attack</div>
+      <div class="seat-q">"How would someone break this?"</div>
+    </div>
+    <div class="seat-chip phase-stress">
+      <div class="seat-num">Seat 8</div>
+      <div class="seat-name">Risk / Fragility</div>
+      <div class="seat-q">"What goes wrong by accident?"</div>
+    </div>
+    <div class="seat-chip phase-stress">
+      <div class="seat-num">Seat 9</div>
+      <div class="seat-name">Resource / Tradeoff</div>
+      <div class="seat-q">"What does this really cost?"</div>
+    </div>
+  </div>
+
+  <h3 style="color: var(--phase-elevate);">ELEVATE — Expand Options</h3>
+  <p>Look up. What can actually be done, who else matters, and what are we not seeing?</p>
+  <div class="seat-row">
+    <div class="seat-chip phase-elevate">
+      <div class="seat-num">Seat 10</div>
+      <div class="seat-name">Execution / Feasibility</div>
+      <div class="seat-q">"Can we actually do this?"</div>
+    </div>
+    <div class="seat-chip phase-elevate">
+      <div class="seat-num">Seat 11</div>
+      <div class="seat-name">Voiceless / Absent</div>
+      <div class="seat-q">"Who has no voice?"</div>
+    </div>
+    <div class="seat-chip phase-elevate">
+      <div class="seat-num">Seat 12</div>
+      <div class="seat-name">Innovation / Possibility</div>
+      <div class="seat-q">"What better option exists?"</div>
+    </div>
+  </div>
+</section>
+
+<!-- Solomon -->
+<section id="solomon">
+  <h2>Solomon — The 13th Seat</h2>
+  <p>Solomon is both the <strong>gatekeeper</strong> (triage) and the <strong>judge</strong> (synthesis). He bookends the process: opens it by choosing the mode, closes it by delivering the verdict.</p>
+
+  <h3>Solomon's Meta-Lenses</h3>
+  <p>Three perspectives Solomon applies during synthesis that require seeing the full picture:</p>
+  <div class="card-grid">
+    <div class="card phase-solomon">
+      <h4>Behavioral</h4>
+      <p>Why are people really acting this way? Hidden motivations, ego, fear, tribalism, self-preservation.</p>
+    </div>
+    <div class="card phase-solomon">
+      <h4>Strategic</h4>
+      <p>Who benefits? Who loses? Where is the leverage? What move changes the board?</p>
+    </div>
+  </div>
+  <div class="card" style="border-left: 3px solid var(--solomon); max-width: 48%; margin-top: -2px;">
+    <div class="card-label" style="color: var(--solomon);">Meta-Lens</div>
+    <h4 style="color: var(--solomon);">Meaning</h4>
+    <p>Who are we becoming through this decision? What story does this create in 5 years?</p>
+  </div>
+
+  <h3>Solomon's Process</h3>
+  <ol>
+    <li>Hear all seats</li>
+    <li>Reject lies, panic, ego, and false urgency</li>
+    <li>Apply meta-lenses (Behavioral, Strategic, Meaning)</li>
+    <li>Balance short-term and long-term</li>
+    <li>Protect truth, people, and consequences</li>
+    <li><strong>Make the call</strong> — name the tradeoff, own the sacrifice</li>
+  </ol>
+
+  <div class="callout important">
+    <strong>The Rule</strong>
+    Solomon always names the tradeoff. "We sacrifice X to protect Y because Z." Never "we need to balance multiple factors." A verdict without a named sacrifice is not a verdict.
+  </div>
+</section>
+
+<!-- Modes -->
+<section id="modes">
+  <h2>Execution Modes</h2>
+  <p>Solomon reads the situation first, assesses complexity, and recommends a mode. You confirm or override.</p>
+
+  <div class="mode-grid">
+    <div class="mode-card">
+      <div class="mode-letter">A</div>
+      <div class="mode-name">Essential Five</div>
+      <div class="mode-time">&lt; 60 seconds</div>
+      <div class="mode-desc">
+        <strong>5 seats:</strong> Truth, Systems, Human, Adversarial, Voiceless<br><br>
+        For quick decisions, low-stakes choices, time-pressured situations. Self-contained in SKILL.md alone.
+      </div>
+    </div>
+    <div class="mode-card" style="border: 1px solid var(--gold-dim);">
+      <div class="mode-letter">B</div>
+      <div class="mode-name">Full Council</div>
+      <div class="mode-time">&lt; 3 minutes</div>
+      <div class="mode-desc">
+        <strong>All 12 seats</strong> + Solomon synthesis<br><br>
+        For important decisions, deliverable reviews, moderate stakes. Loads phase files for full seat definitions.
+      </div>
+    </div>
+    <div class="mode-card">
+      <div class="mode-letter">C</div>
+      <div class="mode-name">Full Pipeline</div>
+      <div class="mode-time">3 &ndash; 9 minutes</div>
+      <div class="mode-desc">
+        <strong>All 12 seats</strong> + extended analysis + reconciliation<br><br>
+        For high-stakes decisions: legal, financial, production, public-facing. Maximum depth.
+      </div>
+    </div>
+  </div>
+
+  <h3>Model Compatibility</h3>
+  <table>
+    <thead>
+      <tr><th>Model</th><th>Supported Modes</th><th>Default</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Opus</td><td>A, B, C</td><td>B</td></tr>
+      <tr><td>Sonnet</td><td>A, B</td><td>B</td></tr>
+      <tr><td>Haiku</td><td>A only</td><td>A</td></tr>
+    </tbody>
+  </table>
+  <p>If Solomon recommends a mode your model doesn't support, it auto-downgrades with an explanation.</p>
+</section>
+
+<!-- Usage -->
+<section id="usage">
+  <h2>Usage</h2>
+
+  <h3>Slash Commands</h3>
+  <pre><code>/council-of-12 &lt;describe your situation&gt;
+/solomon &lt;describe your situation&gt;
+/c12 &lt;describe your situation&gt;</code></pre>
+
+  <h3>Mode Shortcuts</h3>
+  <table>
+    <thead><tr><th>Say this</th><th>Gets this</th></tr></thead>
+    <tbody>
+      <tr><td><code>"essential five"</code> or <code>"quick council"</code></td><td>Mode A directly (skips triage)</td></tr>
+      <tr><td><code>"all seats"</code> or <code>"full council"</code></td><td>Mode B directly</td></tr>
+      <tr><td><code>"full pipeline"</code> or <code>"deep analysis"</code></td><td>Mode C directly</td></tr>
+      <tr><td>(describe normally)</td><td>Solomon triages and recommends</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Activation Triggers</h3>
+  <p>The skill also auto-activates on these phrases:</p>
+  <div class="card-grid">
+    <div class="card">
+      <h4>Inherited Triggers</h4>
+      <p>"run the audit" &middot; "stakeholder review" &middot; "POV check" &middot; "multi-perspective" &middot; "reconcile this" &middot; "pressure-test this" &middot; "find the blind spots" &middot; "before I send this" &middot; "before I ship this"</p>
+    </div>
+    <div class="card">
+      <h4>New Triggers</h4>
+      <p>"council" &middot; "council of 12" &middot; "12 seats" &middot; "solomon" &middot; "run the council" &middot; "convene the council" &middot; "what do the 12 say" &middot; "essential five"</p>
+    </div>
+  </div>
+
+  <h3>Auto-Trigger</h3>
+  <p>The skill leans toward auto-activating when it detects:</p>
+  <ul style="margin-left: 20px; margin-bottom: 16px;">
+    <li>High-stakes deliverables (legal, financial, public-facing)</li>
+    <li>Deliverables being handed off to someone else</li>
+    <li>Work you'll be held accountable for</li>
+  </ul>
+
+  <h3>The Execution Pipeline</h3>
+  <div class="pipeline">
+    <div class="pipeline-stage" style="border-color: var(--phase-ground);">
+      <div class="stage-label">Phase 1</div>
+      <div class="stage-name" style="color: var(--phase-ground);">GROUND</div>
+      <div style="font-size: 0.8rem; color: var(--text-dim);">Truth, Context, Systems</div>
+    </div>
+    <div class="pipeline-arrow">&rarr;</div>
+    <div class="pipeline-stage" style="border-color: var(--phase-bound);">
+      <div class="stage-label">Phase 2</div>
+      <div class="stage-name" style="color: var(--phase-bound);">BOUND</div>
+      <div style="font-size: 0.8rem; color: var(--text-dim);">Ethics, Rules, Human</div>
+    </div>
+    <div class="pipeline-arrow">&rarr;</div>
+    <div class="pipeline-stage" style="border-color: var(--phase-stress);">
+      <div class="stage-label">Phase 3</div>
+      <div class="stage-name" style="color: var(--phase-stress);">STRESS</div>
+      <div style="font-size: 0.8rem; color: var(--text-dim);">Adversarial, Risk, Resource</div>
+    </div>
+    <div class="pipeline-arrow">&rarr;</div>
+    <div class="pipeline-stage" style="border-color: var(--phase-elevate);">
+      <div class="stage-label">Phase 4</div>
+      <div class="stage-name" style="color: var(--phase-elevate);">ELEVATE</div>
+      <div style="font-size: 0.8rem; color: var(--text-dim);">Execution, Voiceless, Innovation</div>
+    </div>
+    <div class="pipeline-arrow">&rarr;</div>
+    <div class="pipeline-stage" style="border-color: var(--solomon);">
+      <div class="stage-label">Synthesis</div>
+      <div class="stage-name" style="color: var(--solomon);">SOLOMON</div>
+      <div style="font-size: 0.8rem; color: var(--text-dim);">Meta-lenses + Verdict</div>
+    </div>
+  </div>
+</section>
+
+<!-- Examples -->
+<section id="examples">
+  <h2>Examples</h2>
+
+  <h3>Quick Decision (Mode A)</h3>
+  <pre><code>/c12 My manager just asked me to work Saturday. I have family plans.
+Should I accept, negotiate, or decline?</code></pre>
+  <div class="callout tip">
+    <strong>What you get</strong>
+    Solomon recommends Mode A. Five seats give 1-2 sentence insights each. Solomon delivers a verdict with a named tradeoff in under 60 seconds.
+  </div>
+
+  <h3>Deliverable Review (Mode B)</h3>
+  <pre><code>/council-of-12 Review this deployment guide before I send it to the client.
+[paste or reference the deliverable]</code></pre>
+  <div class="callout tip">
+    <strong>What you get</strong>
+    All 12 seats analyze the deliverable. Solomon identifies patterns (multiple seats see the same issue) and tensions (seats disagree). Full report with verdict.
+  </div>
+
+  <h3>High-Stakes Decision (Mode C)</h3>
+  <pre><code>/solomon I've been offered a promotion that requires relocating.
+My partner doesn't want to move. Pay increase is 40%.
+Current role is stable but limited growth. What should I do?</code></pre>
+  <div class="callout tip">
+    <strong>What you get</strong>
+    Solomon recommends Mode C. All 12 seats provide exhaustive analysis. Extended deliberation log. Reconciliation matrix (do now / invest now / defer). Strategic applications across 3 tiers. Time horizon analysis (1 week to 5 years). Zero audit jargon — reads like advice from a wise council.
+  </div>
+
+  <h3>Dr. House Mode (Seat 12)</h3>
+  <pre><code>/c12 full pipeline — We have three teams reporting completely different
+root causes for the same production incident. The metrics don't match
+any of their explanations. What's actually happening?</code></pre>
+  <div class="callout tip">
+    <strong>What you get</strong>
+    Seat 12 (Innovation) activates its Dr. House Differential Diagnosis mode: lists all symptoms, generates competing hypotheses, identifies the one test that distinguishes them. Often reveals the non-obvious answer that explains all the contradictions.
+  </div>
+</section>
+
+<!-- Best Practices -->
+<section id="best-practices">
+  <h2>Best Practices</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4>Let Solomon Triage</h4>
+      <p>Don't always force Mode C. Quick questions deserve quick answers. Trust Solomon to read the room and recommend the right depth.</p>
+    </div>
+    <div class="card">
+      <h4>Give Context, Not Commands</h4>
+      <p>Instead of "run Mode B on this", describe the situation and stakes. Solomon triages better with context: "I'm presenting this to the board tomorrow."</p>
+    </div>
+    <div class="card">
+      <h4>Pay Attention to Tensions</h4>
+      <p>The most valuable output is often where seats disagree. Tensions reveal the real decision — the tradeoff you have to make. Don't skip over them looking for the verdict.</p>
+    </div>
+    <div class="card">
+      <h4>Read the Voiceless Seat</h4>
+      <p>Seat 11 (Voiceless/Absent) catches what every other analytical framework misses: the people affected who aren't in the room. This seat alone justifies the Council.</p>
+    </div>
+    <div class="card">
+      <h4>Use for Non-Tech Problems</h4>
+      <p>This isn't a code review tool. It's a thinking tool. Career decisions, family conflicts, legal questions, business strategy — the 12 lenses are universal.</p>
+    </div>
+    <div class="card">
+      <h4>Name Your Tradeoff</h4>
+      <p>If Solomon's verdict doesn't name what's being sacrificed, something went wrong. Every real decision sacrifices something. Knowing what you're giving up is the point.</p>
+    </div>
+  </div>
+
+  <h3>Anti-Patterns to Avoid</h3>
+  <table>
+    <thead><tr><th>Don't</th><th>Do Instead</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Run Mode C on "tabs vs spaces"</td>
+        <td>Let Solomon triage — he'll recommend Mode A</td>
+      </tr>
+      <tr>
+        <td>Skip Solomon's verdict and cherry-pick seats</td>
+        <td>Read the full synthesis — isolated seat findings miss the interactions</td>
+      </tr>
+      <tr>
+        <td>Treat seats as people ("The Adversary thinks...")</td>
+        <td>Treat as lenses ("From an adversarial perspective...")</td>
+      </tr>
+      <tr>
+        <td>Expect a "balanced" answer</td>
+        <td>Expect a decision with a named sacrifice</td>
+      </tr>
+      <tr>
+        <td>Use only for deliverable reviews</td>
+        <td>Use for any decision where multiple perspectives matter</td>
+      </tr>
+      <tr>
+        <td>Ignore the Meaning meta-lens on personal decisions</td>
+        <td>"Who am I becoming?" is often the most important question</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>When NOT to Use the Council</h3>
+  <ul style="margin-left: 20px; margin-bottom: 16px;">
+    <li>Pure implementation tasks ("fix this null check") — just do the work</li>
+    <li>Information lookups ("what's the syntax for X?") — ask directly</li>
+    <li>When you've already decided and just want validation — the Council may disagree</li>
+    <li>Trivial decisions with no meaningful tradeoff — Solomon will tell you so</li>
+  </ul>
+</section>
+
+<!-- File Structure -->
+<section id="files">
+  <h2>File Structure</h2>
+
+  <table>
+    <thead><tr><th>File</th><th>Size</th><th>Loaded When</th><th>Contains</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>SKILL.md</code></td>
+        <td>~1,500 lines</td>
+        <td>Always (auto-loaded)</td>
+        <td>Orchestrator, Solomon protocol, Mode A seats, triage, synthesis</td>
+      </tr>
+      <tr>
+        <td><code>ground.md</code></td>
+        <td>~400 lines</td>
+        <td>Mode B/C (via Read)</td>
+        <td>Seats 1-3: Truth, Context, Systems (full definitions)</td>
+      </tr>
+      <tr>
+        <td><code>bound.md</code></td>
+        <td>~710 lines</td>
+        <td>Mode B/C (via Read)</td>
+        <td>Seats 4-6: Ethics, Rules, Human (full definitions)</td>
+      </tr>
+      <tr>
+        <td><code>stress.md</code></td>
+        <td>~810 lines</td>
+        <td>Mode B/C (via Read)</td>
+        <td>Seats 7-9: Adversarial, Risk, Resource (full definitions)</td>
+      </tr>
+      <tr>
+        <td><code>elevate.md</code></td>
+        <td>~610 lines</td>
+        <td>Mode B/C (via Read)</td>
+        <td>Seats 10-12: Execution, Voiceless, Innovation (full definitions)</td>
+      </tr>
+      <tr>
+        <td><code>templates/report.md</code></td>
+        <td>~620 lines</td>
+        <td>Mode B/C (via Read)</td>
+        <td>Output format templates for Mode B and Mode C reports</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>How File Loading Works</strong>
+    Claude Code's skill loader reads ONLY <code>SKILL.md</code> into context automatically. For Mode A, that's all that's needed — it's fully self-contained. For Mode B/C, SKILL.md contains explicit instructions to load phase files and the report template via the Read tool. This selective-load architecture keeps Mode A fast (~6K tokens) while giving Mode B/C full depth (~25K+ tokens).
+  </div>
+</section>
+
+<!-- Troubleshooting -->
+<section id="troubleshooting">
+  <h2>Troubleshooting</h2>
+
+  <table>
+    <thead><tr><th>Problem</th><th>Solution</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><code>/council-of-12</code> not found</td>
+        <td>Ensure files are at <code>~/.claude/skills/council-of-12/SKILL.md</code>. Restart Claude Code session.</td>
+      </tr>
+      <tr>
+        <td>Mode B/C says "cannot read phase file"</td>
+        <td>Check that <code>ground.md</code>, <code>bound.md</code>, <code>stress.md</code>, <code>elevate.md</code> exist in the skill directory. The skill falls back to Mode A if files are missing.</td>
+      </tr>
+      <tr>
+        <td>Output uses audit jargon on a personal problem</td>
+        <td>Prefix with the domain: "This is a personal/career decision." The language adaptation layer adjusts vocabulary. If it persists, report it — the domain rules need strengthening.</td>
+      </tr>
+      <tr>
+        <td>Solomon recommends Mode A but I want deeper</td>
+        <td>Say "full council" or "all seats" to override the triage. Solomon recommends, you decide.</td>
+      </tr>
+      <tr>
+        <td>Taking too long on Mode A</td>
+        <td>Mode A should finish in &lt;60s. If it's loading phase files, something is wrong — Mode A should never use Read calls. Check that SKILL.md has the "DO NOT use Read tool" guardrail.</td>
+      </tr>
+      <tr>
+        <td>Haiku model gives poor results</td>
+        <td>Haiku supports Mode A only. For Mode B/C quality, switch to Sonnet or Opus.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+
+<footer>
+  Council of 12 &amp; The Solomon Seat &mdash; Universal Multi-Perspective Analysis<br>
+  Built with Japanese engineering philosophy: worst-case-first, built to last.<br>
+  Orlando Molina &mdash; <a href="https://truepointagents.com">TruePointAgents.com</a>
+</footer>
+
+</body>
+</html>

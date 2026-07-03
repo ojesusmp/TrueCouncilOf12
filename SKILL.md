@@ -1,6 +1,6 @@
 ---
 name: TrueCouncilOf12
-description: "Universal 12-lens analysis with Solomon coordinator. 12 seats (Truth, Context, Systems, Ethics, Rules, Human, Adversarial, Risk, Resource, Execution, Voiceless, Innovation) + Solomon integration with Behavioral/Strategic/Meaning meta-lenses. Replaces stakeholder-audit. Formerly named council-of-12."
+description: "Universal 12-lens analysis with Solomon coordinator. Invoke only when the user asks for the council ('council of 12', 'TrueCouncilOf12', 'c12', 'solomon'); do not auto-fire."
 aliases: [council, solomon, c12, council-of-12, true-council, tco12]
 author: "Orlando Molina - TruePointAgents.com"
 argument-hint: "<situation, deliverable, decision, or problem to analyze>"
@@ -53,15 +53,17 @@ tradeoff. Solomon never says "it depends." Solomon decides.
 
 ## Activation Conditions
 
+**This skill never auto-fires.** The frontmatter governs: the Council convenes only when the user explicitly asks for it. The phrase lists below are recognition vocabulary for what counts as an explicit ask — they are not permission to self-activate.
+
 ### Explicit Triggers
-These phrases activate the Council directly:
+These phrases, when the user directs them at Claude as a request, activate the Council:
 - "council", "council of 12", "12 seats", "solomon"
 - "run the council", "convene the council"
 - "what do the 12 say", "all seats"
 - "essential five", "quick council"
 
 ### Inherited Triggers (from stakeholder-audit)
-These legacy phrases also activate the Council:
+These legacy phrases also count as explicit asks when the user directs them at the current work:
 - "run the audit", "stakeholder review", "POV check"
 - "multi-perspective", "reconcile this"
 - "best move right now", "strategist lens"
@@ -69,8 +71,8 @@ These legacy phrases also activate the Council:
 - "find the blind spots"
 - "before I send this", "before I ship this"
 
-### Auto-Trigger Conditions
-Solomon may recommend activation when detecting:
+### Escalation Suggestions (inside an already-convened session only)
+Once the Council is already running, Solomon may recommend a deeper mode when detecting:
 - **High-stakes deliverables**: Legal filings, financial decisions, public-facing communications,
   documents being handed off to others who will act on them
 - **Accountability situations**: Anything the user will be held accountable for, where a missed
@@ -79,14 +81,27 @@ Solomon may recommend activation when detecting:
   structured reasoning to choose
 - **Irreversible decisions**: Actions that cannot be easily undone once taken
 
-When auto-triggering, Solomon presents the recommendation and waits for user confirmation
-before proceeding. Never auto-execute without consent.
+Solomon presents the escalation recommendation and waits for user confirmation before
+switching modes. Never escalate without consent. Outside a council session, Claude may at
+most mention in one sentence that the Council is available for a high-stakes deliverable —
+never convene it unasked.
+
+**Mechanics of a confirmed mid-session escalation** (e.g., A→B): keep the seat outputs
+already produced — never re-pay for them. Load the phase files, run the not-yet-run seats
+at the deeper depth, deepen an already-run seat only if Solomon judges its compact
+finding decision-critical (it names the load-bearing fact, the primary risk, or the
+dominant tension — Solomon states which, in one line), then Solomon synthesizes over the
+combined set.
 
 ---
 
 ## Solomon Triage Protocol
 
 Solomon reads every situation BEFORE any seat speaks. This is the intake process.
+
+**Null-situation rule:** if the invocation carries no situation and none is inferable from
+the conversation, ask one question — "What should the Council analyze?" — and stop.
+Triage cannot run on a null situation.
 
 ### Step 1: Situation Assessment
 
@@ -114,6 +129,8 @@ Solomon evaluates four dimensions:
 - `LEGAL` — Law, compliance, regulation, contracts
 - `PERSONAL` — Relationships, career, health, life decisions
 - `BUSINESS` — Strategy, operations, finance, management
+- `CREATIVE` — Writing, design, product, art
+- `MEDICAL` — Health decisions, treatment, care
 - `MIXED` — Spans multiple domains
 
 ### Step 2: Mode Selection
@@ -129,12 +146,14 @@ Based on the assessment, Solomon recommends one of three modes:
 **Selection logic:**
 - Stakes LOW + Complexity SIMPLE → Mode A
 - Stakes LOW + Complexity MODERATE → Mode A
+- Stakes LOW + Complexity COMPLEX/SYSTEMIC → Mode B
 - Stakes MEDIUM + any complexity → Mode B
 - Stakes HIGH + Complexity SIMPLE/MODERATE → Mode B
 - Stakes HIGH + Complexity COMPLEX/SYSTEMIC → Mode C
 - Stakes CRITICAL + any complexity → Mode C
 - Time Pressure URGENT → downgrade one mode (C→B, B→A)
 - Time Pressure DELIBERATE → upgrade one mode if stakes warrant (A→B, B→C)
+- Any Stakes × Complexity combination not listed above → Mode B (the default)
 
 ### Step 3: Shortcut Detection
 
@@ -142,6 +161,13 @@ Certain phrases bypass triage and go directly to a mode:
 - "essential five" or "quick council" → **Mode A** (no triage needed)
 - "all seats" or "full council" → **Mode B** (no triage needed)
 - "full pipeline" or "deep analysis" → **Mode C** (no triage needed)
+
+Shortcuts bypass Steps 1-2 and the confirmation — **never Step 4**: the band capability
+check always runs, and a user-named mode that exceeds the running model's band downgrades
+per Conflict Resolution (tell the user). Before executing, make a silent one-line Step 1
+assessment so the report's Stakes field is real, not blank. The **null-situation rule
+outranks shortcuts**: with no situation to analyze, ask the one question and stop,
+whatever mode was named.
 
 ### Step 4: Model Capability Check
 
@@ -163,7 +189,21 @@ Recommended Mode: [A/B/C] — [reason]
 Proceed? (yes / change mode / adjust)
 ```
 
-Wait for user confirmation before executing.
+Wait for user confirmation before executing. The responses mean:
+
+- **yes** → execute the recommended mode.
+- **change mode** → execute the mode the user names (band capability check still applies).
+- **adjust** → the user corrects stakes/complexity/time/domain; re-run Steps 1-4 once with
+  the corrected inputs and present again. ONE re-triage maximum — after that, execute
+  whichever mode the user picks (default: the latest recommendation).
+- **decline** ("no", "cancel", "not now", or any refusal) → stand down; do not run the
+  Council and do not re-ask.
+- **a question** → answer it, then re-present the same recommendation (this does not
+  consume the re-triage).
+
+**Explicit-proceed exception:** if the user's invocation already named a mode (Step 3
+shortcuts) or explicitly told the Council to proceed without asking, skip the confirmation
+and execute directly.
 
 ---
 
@@ -285,7 +325,11 @@ bad-faith actors, trolls, litigators. Test every public-facing element against t
 "worst headline" test: what is the worst true headline someone could write about this?
 
 **Output (Mode A):** 1-2 key findings in natural language. Name the weakest point and
-the most likely attack vector.
+the most likely attack vector, and close with one line — `CHEAPEST TEST: [zero-cost, ≤72h
+action that would falsify the attack if it is not real]`. (This satisfies the STRESS tag
+requirement in Synthesis Step 2's discount scan. Wording note: never write dollar-sign
+tokens like "dollar-zero" as literals in this file — the skill loader substitutes
+positional arguments into $-tokens at load time and silently corrupts the rule text.)
 
 **Tagline:** *This seat assumes enemies exist.*
 
@@ -363,6 +407,8 @@ Mode: A (Essential Five) | Stakes: [level] | [date]
 
 SEAT 1 — TRUTH / EVIDENCE
 "What do we actually know?"
+LOAD-BEARING FACT: [the single fact this analysis rests on, or NONE — analysis is opinion-only]
+IF FALSE: [what becomes invalid downstream]
 [1-2 sentences: the strongest verified fact and the most dangerous assumption]
 
 --- GROUND ---
@@ -382,6 +428,7 @@ SEAT 6 — HUMAN / EMOTIONAL
 SEAT 7 — ADVERSARIAL / ATTACK
 "How would someone break this on purpose?"
 [1-2 sentences: the weakest point and the most likely attack vector]
+CHEAPEST TEST: [zero-cost, ≤72h action that would falsify the attack — omit this line if the seat returned NO FINDING]
 
 --- ELEVATE ---
 
@@ -422,7 +469,7 @@ lenses no individual seat carries, and renders a verdict that the user can act o
 Gather findings from all active seats:
 - Mode A: 5 seats, 1-2 findings each (10 data points maximum)
 - Mode B: 12 seats, 3-5 findings each (60 data points maximum)
-- Mode C: 12 seats, exhaustive findings (unlimited, but prioritized)
+- Mode C: 12 seats, exhaustive findings (capped ~1,200 words per seat, prioritized by impact)
 
 Do not filter or pre-judge at this stage. Every finding enters the record.
 
@@ -434,7 +481,7 @@ Before counting convergence, Solomon scans each seat's output and tags any of:
 - (a) `NO FINDING` missing its `would have flagged if: [X]` clause
 - (b) findings that restate the situation without naming a specific risk, fact, or action
 - (c) findings concluding only with "consider X" or "be mindful of X" without a testable claim
-- (d) STRESS-phase findings (Seats 7, 8, 9) missing their CHEAPEST [action] line
+- (d) STRESS-phase findings (Seats 7, 8, 9 — in the modes where each runs; in Mode A only Seat 7 applies) missing their CHEAPEST [action] line — a well-formed `NO FINDING — would have flagged if: [X]` is exempt (nothing to test)
 
 Tagged findings are excluded from convergence scoring and synthesis weight. This prevents manufactured-to-fill-space findings from inflating the convergence score and giving false confidence in the verdict.
 
@@ -638,10 +685,10 @@ After applying the meta-lenses, Solomon answers five integrating questions:
 
 **SYNTHESIS WEIGHT (operationalizes Rule #11):**
 
-Solomon synthesis — verdict + convergence + tension + meta-lenses + consensus check — must be at least **30% of total Council output token count** AND longer than any individual seat. If the draft synthesis falls below 30%, Solomon must either:
+Solomon synthesis — verdict + convergence + tension + meta-lenses + consensus check — must be at least **30% of total Council output by word count** (count words, not tokens — token counts are not observable at generation time; an estimate is acceptable) AND longer than any individual seat. If the draft synthesis falls below 30%, Solomon must either:
 
 - (a) Expand synthesis with concrete integration of seat findings (preferred when seats are short), OR
-- (b) Compress seats by quoting only their tagged outputs (LOAD-BEARING FACT, CHEAPEST [action], findings tags) and dropping seat narrative (preferred when seats are long).
+- (b) Compress seats by quoting each seat's tagged lines where they exist (LOAD-BEARING FACT, CHEAPEST lines) plus that seat's single strongest finding in one sentence, dropping the rest of the narrative (preferred when seats are long). Every seat keeps at least one finding — compression must never zero out a seat.
 
 Default to (b) when seat output is the dominant share. Report the ratio at the end of the synthesis: `SYNTHESIS RATIO: [N]%`.
 
@@ -695,7 +742,8 @@ would it agree, disagree mildly, or disagree strongly?"
 - If 3+ seats would strongly disagree → Solomon MUST reconsider the verdict
 - Reconsideration does not mean changing the verdict — it means explicitly addressing
   why those seats are overruled and confirming the tradeoff is worth it
-- If reconsideration changes Solomon's mind, issue a revised verdict
+- If reconsideration changes Solomon's mind, issue a revised verdict — at most ONE
+  reconsideration per session; the revised verdict is final and is not re-simulated
 
 **This is NOT re-running the seats.** Solomon does not re-analyze the situation through
 each lens. This is Solomon's judgment about how his decision lands — a stress test
@@ -710,6 +758,9 @@ Strong dissent: [list seats with strong disagreement and one-line reason]
 [If 3+ strong dissent: "RECONSIDERED: [explanation of reconsideration]"]
 ```
 
+(When the report template is loaded, render this as the template's Consensus Check table —
+same three tiers: Agrees / Mild dissent / Strong dissent.)
+
 ---
 
 ## Mode B/C: Full Council Orchestration
@@ -722,14 +773,14 @@ for all 12 seats that go beyond the compact Essential Five.
 
 **To execute Mode B or C, load all 4 phase files using the Read tool in this order:**
 
-1. Read the file `ground.md` in this skill's directory (`~/.claude/skills/TrueCouncilOf12/ground.md`)
-2. Read the file `bound.md` in this skill's directory (`~/.claude/skills/TrueCouncilOf12/bound.md`)
-3. Read the file `stress.md` in this skill's directory (`~/.claude/skills/TrueCouncilOf12/stress.md`)
-4. Read the file `elevate.md` in this skill's directory (`~/.claude/skills/TrueCouncilOf12/elevate.md`)
+1. Read `ground.md` from this skill's base directory (the directory containing this SKILL.md — the harness announces it when the skill loads; never assume a fixed install path)
+2. Read `bound.md` from the same base directory
+3. Read `stress.md` from the same base directory
+4. Read `elevate.md` from the same base directory
 
 Then read the output template:
 
-5. Read `templates/report.md` in this skill's directory (`~/.claude/skills/TrueCouncilOf12/templates/report.md`)
+5. Read `templates/report.md` from the same base directory
 
 ### Execution Order
 
@@ -748,7 +799,7 @@ Execute each seat in strict phase order:
 - Output: Use `templates/report.md` format
 
 ### Mode C Specifics
-- Depth: Exhaustive findings per seat (no limit, but prioritize by impact)
+- Depth: exhaustive within a hard cap of ~1,200 words per seat (mirrored in the phase files); prioritize by impact — overflow becomes one-line entries in the handoff
 - Synthesis: Extended deliberation — Solomon spends more time on tensions and meta-lenses
 - Consensus simulation: Included with extended reasoning
 - **Paired Exchanges:** Two structured exchanges run after all 12 seats and before Solomon synthesis (see protocol below)
@@ -771,22 +822,23 @@ This subsection imports the marketing-council v3 adversarial-pairing discipline 
 **Protocol:**
 
 **Exchange 1 — Truth (Seat 1) ↔ Adversarial (Seat 7), on the LOAD-BEARING FACT:**
+0. If Seat 1 emitted `LOAD-BEARING FACT: NONE`, skip this exchange and note the skip — there is nothing to attack, and the REVISE cap already applies.
 1. Seat 7 names the single most dangerous attack on Seat 1's LOAD-BEARING FACT. (Not all possible attacks — the one that, if true, most damages the analysis.)
 2. Seat 1 responds: either concedes (and amends the LOAD-BEARING FACT line to reflect the weakness) or rebuts with one piece of concrete evidence.
-3. One round. **Hard cap: 150 tokens total across both turns.**
+3. One round. **Hard cap: ~100 words (≈150 tokens) total across both turns; if exceeded, truncate and move on.**
 
 **Exchange 2 — Ethics (Seat 4) ↔ Adversarial (Seat 7), on harm/principle:**
 1. Seat 7 names the cheapest way the action implied by the developing verdict harms the Voiceless or violates a stated principle.
 2. Seat 4 responds: concedes or rebuts.
-3. One round. **Hard cap: 150 tokens total.**
+3. One round. **Hard cap: ~100 words (≈150 tokens) total; if exceeded, truncate and move on.**
 
 **Solomon obligations:** Synthesis MUST reference the substantive outcome of each exchange — not just cite that the exchange occurred. Unreferenced exchanges or citation-only references ("as the Seat 1↔7 pairing showed...") are a Mode C failure.
 
-**Relationship to Step 7 (Consensus Simulation):** Paired Exchanges and Step 7 are complementary, not duplicative. Paired Exchanges happen *before* the verdict — they surface real adversarial pressure on the load-bearing fact and the ethics-vs-attack tension *while the verdict is forming*. Step 7 happens *after* the verdict — it stress-tests the formed verdict against all 12 seat perspectives via Solomon's own simulation. Keep both unless paired-test scoring shows redundancy; in that case, drop Step 7 (the simulated check) first since Paired Exchanges produce real adversarial signal.
+**Relationship to Step 7 (Consensus Simulation):** Paired Exchanges and Step 7 are complementary, not duplicative. Paired Exchanges happen *before* the verdict — they surface real adversarial pressure on the load-bearing fact and the ethics-vs-attack tension *while the verdict is forming*. Step 7 happens *after* the verdict — it stress-tests the formed verdict against all 12 seat perspectives via Solomon's own simulation. Keep both; if in practice they prove redundant (the consensus simulation never changes anything after the exchanges), drop Step 7 first since Paired Exchanges produce real adversarial signal.
 
 **Scope boundary:** Mode A and Mode B do not run Paired Exchanges. Mode A is too compact (only 5 seats). Mode B can be extended later if Mode C scoring justifies it.
 
-**Rollback gate:** If acceptance-suite paired-test rubric averages < 1.5 across runs, the Paired Exchanges protocol reverts. Mode A and Mode B are unaffected by any rollback of this subsection.
+**Rollback gate (decidable per run):** if in a Mode C run the exchanges added nothing Solomon's synthesis substantively used (concessions and rebuttals merely restated seat findings), say so in the synthesis. If the user reports this has happened twice, recommend reverting this subsection. The revert is Mode-C-local; Mode A and Mode B are unaffected.
 
 ### File Loading Guardrail
 
@@ -804,48 +856,70 @@ DO:
 - Offer Mode A as a fallback (it is fully self-contained)
 - If the user insists on Mode B/C, explain that missing files produce incomplete analysis
 
+**Template-only failure:** if all four phase files load but `templates/report.md` does
+not, proceed with the run anyway — structure the output from the phase files' Solomon
+Handoff formats plus this file's synthesis protocol — and tell the user the template was
+unavailable. Only a phase-file failure triggers the Mode A fallback offer.
+
 ---
 
 ## Model Compatibility
 
-### Supported Modes by Model
+### Capability Bands (stable — every rule in this skill references bands, never model names)
 
-| Model | Model ID | Supported Modes | Default Mode | Context Ceiling | Notes |
-|-------|----------|----------------|--------------|-----------------|-------|
-| Opus 4.7 | `claude-opus-4-7` (1M context: `claude-opus-4-7[1m]`) | A, B, C | B | High (1M context variant) | Full capability. Mode C recommended for critical stakes. **Enable extended thinking for Mode C** when load-bearing fact is ambiguous, tensions are unresolved, or Mode C paired exchanges require deep evaluation. |
-| Sonnet 4.6 | `claude-sonnet-4-6` | A, B | B | Moderate | Mode B is the sweet spot. Mode C risks context overflow without compression. |
-| Haiku 4.5 | `claude-haiku-4-5-20251001` | A only | A | Limited | Essential Five only. Skip Mode B/C recommendation entirely. Use for triage and quick decisions. |
+| Band | Supported Modes | Default Mode | Council guidance |
+|------|----------------|--------------|------------------|
+| **FRONTIER** (top-tier reasoning) | A, B, C | B | Full capability. Mode C recommended for critical stakes. Enable extended thinking for Mode C when the load-bearing fact is ambiguous, tensions are unresolved, or Paired Exchanges need deep evaluation. |
+| **MID** (strong general models) | A, B | B | Mode B is the sweet spot. Mode C risks degraded synthesis — downgrade per Conflict Resolution. |
+| **COMPACT** (small/fast models) | A only | A | Essential Five only. Triage must not present Mode B/C as options on a COMPACT model. |
 
-**Anthropic best-practice notes for Council execution:**
-- **Extended thinking (Opus 4.7):** Engage extended thinking for Mode C deliberation. The synthesis weight rule (≥30% of total output) and Mode C paired exchanges benefit from extra reasoning budget. Not needed for Mode A.
-- **Prompt caching (5-min TTL):** When iterating on a Council run (re-running seats, refining synthesis), keep iteration cycles under 5 minutes to retain cache. Phase files (ground/bound/stress/elevate) are stable content — ideal cache targets.
-- **Model selection by triage:** Default routing — Haiku 4.5 for low-stakes/simple, Sonnet 4.6 for standard, Opus 4.7 for high-stakes/systemic. If Solomon triage produces Mode C, recommend Opus 4.7 with extended thinking.
+### Model → Band Table
+
+**This table is the ONLY place model names appear in this skill. When the model lineup changes, update this table and nothing else.**
+
+| Model | Band |
+|-------|------|
+| Fable 5 (`claude-fable-5`) | FRONTIER |
+| Opus 4.8 (`claude-opus-4-8`) | FRONTIER |
+| Sonnet 5 (`claude-sonnet-5`) | MID |
+| Haiku 4.5 (`claude-haiku-4-5-20251001`) | COMPACT |
+
+**Unknown-model rule:** if the running model is not in the table (newer than this file, renamed, or unrecognized), do not stall, refuse, or guess silently. Assume **MID** band, state the assumption in one triage line ("model not in band table — assuming MID"), and proceed. If the model verifiably self-identifies as a top-tier/frontier model, FRONTIER may be assumed instead — say so explicitly.
+
+**Execution notes:**
+- **Extended thinking (FRONTIER band):** Engage for Mode C deliberation. The synthesis weight rule (≥30% of total output) and Paired Exchanges benefit from extra reasoning budget. Not needed for Mode A.
+- **Prompt caching:** provider cache TTLs are short (typically minutes) and change over time — keep iteration cycles tight to retain cache. Phase files (ground/bound/stress/elevate) are stable content — ideal cache targets.
+- **Model selection by triage:** COMPACT for low-stakes/simple, MID for standard, FRONTIER for high-stakes/systemic. If triage produces Mode C, recommend a FRONTIER model with extended thinking.
 
 ### Conflict Resolution
 
-When Solomon's recommended mode exceeds model capability:
+When Solomon's recommended mode exceeds the running model's band:
 
-**Sonnet + Mode C recommended:**
+**MID band + Mode C recommended:**
 → Downgrade to Mode B
-→ Tell user: "Mode C recommended for this situation but exceeds current model capacity.
+→ Tell user: "Mode C recommended for this situation but exceeds the current model's band.
 Running Mode B (Full Council) which provides complete 12-seat analysis. For Mode C
-depth, consider running on Opus."
+depth, consider running on a FRONTIER-band model."
 
-**Haiku + Mode B or C recommended:**
+**COMPACT band + Mode B or C recommended:**
 → Downgrade to Mode A
-→ Tell user: "Full Council recommended for this situation but exceeds current model
-capacity. Running Mode A (Essential Five) which covers the 5 most critical lenses.
-For full analysis, consider running on Sonnet or Opus."
+→ Tell user: "Full Council recommended for this situation but exceeds the current model's band.
+Running Mode A (Essential Five) which covers the 5 most critical lenses.
+For full analysis, consider running on a MID- or FRONTIER-band model."
 
-**Haiku context:**
-When running on Haiku, Solomon's triage should NOT recommend Mode B or C at all.
+**COMPACT context:**
+When running on a COMPACT-band model, Solomon's triage should NOT recommend Mode B or C at all.
 Present only Mode A as the option. Do not display modes the model cannot execute.
 
 ### Graceful Degradation
 
-If during Mode B execution the context window is filling up (many seats producing
-extensive output), Solomon may compress remaining seats to Mode A depth (1-2 findings)
-rather than truncating the synthesis. The synthesis is more valuable than exhaustive
+If during Mode B execution cumulative seat output exceeds roughly 8,000 words — or during
+Mode C, roughly 16,000 words — with seats still remaining (a practical proxy — word counts
+are observable, context fill is not), Solomon compresses the remaining seats to Mode A
+depth (1-2 findings) rather than truncating the synthesis. These thresholds sit clearly
+above each mode's maximum cap-compliant output (Mode B: 12 seats × roughly one page
+≈ 6,000 words < 8,000; Mode C: 12 seats × ~1,200 words = ~14,400 < 16,000), so
+degradation stays the exception, never the common case. The synthesis is more valuable than exhaustive
 seat output. Never sacrifice Solomon's synthesis to fit more seat findings.
 
 ---
@@ -919,7 +993,7 @@ content gets the most weight.**
    not a summarizer. Solomon is the judge. He hears all perspectives and then makes
    the call. If the analysis ends without a clear decision, Solomon has failed.
 
-3. **The Council is not a free debate.** Seats analyze independently during seat execution. **Exception:** in Mode C only, after all 12 seats have produced primary findings and before Solomon synthesis, two structured paired exchanges run per the Paired Exchanges (Mode C only) protocol — Seat 1 ↔ Seat 7 on the LOAD-BEARING FACT, and Seat 4 ↔ Seat 7 on harm/principle. These are not free debate — they are one-round structured probes with hard 150-token caps. Tensions across all other seat pairs are identified by Solomon during synthesis, not during seat execution.
+3. **The Council is not a free debate.** Seats analyze independently during seat execution. **Exception:** in Mode C only, after all 12 seats have produced primary findings and before Solomon synthesis, two structured paired exchanges run per the Paired Exchanges (Mode C only) protocol — Seat 1 ↔ Seat 7 on the LOAD-BEARING FACT, and Seat 4 ↔ Seat 7 on harm/principle. These are not free debate — they are one-round structured probes with hard ~100-word (≈150-token) caps. Tensions across all other seat pairs are identified by Solomon during synthesis, not during seat execution.
 
 ### Output Rules
 
@@ -964,9 +1038,9 @@ content gets the most weight.**
 11. **Solomon's synthesis must be at least 30% of total Council output AND longer than any individual seat.** The synthesis is the most important part of the output. If the synthesis falls below 30% of total output, or any single seat is longer than Solomon, the proportions are wrong. Compress seat output before compressing Solomon. See "SYNTHESIS WEIGHT" under Synthesis Protocol Step 6 for the enforcement protocol. Report `SYNTHESIS RATIO: [N]%` at the end of every Mode B/C synthesis.
 
 12. **Do not manufacture findings.** If a seat has nothing meaningful to contribute
-    to a specific situation, say so briefly and move on. "No significant adversarial
-    vectors identified for this situation" is a valid finding. Inventing threats to
-    fill space is not.
+    to a specific situation, say so briefly and move on. `NO FINDING — would have
+    flagged if: [X]` (with the clause filled in) is a valid finding. Inventing threats
+    to fill space is not.
 
 ### The Prime Directive
 

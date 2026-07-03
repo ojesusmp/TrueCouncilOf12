@@ -145,14 +145,13 @@ This question is particularly useful when the ethical case for one option is cle
 
 ## 4.4 Depth Scaling
 
-**Mode A (Standard — 1-2 findings):**
-Answer Q4.1-Q4.4 with one concrete ethical finding per question. Flag any issues where the decision appears legal but ethically problematic. Deliver findings in 3-5 sentences. No extended exploration.
+**Mode A:** This seat does not run in Mode A (Essential Five = Seats 1, 3, 6, 7, 11), and phase files are never loaded in Mode A. The guidance below applies to Modes B and C only.
 
 **Mode B (Deep — 3-5 findings):**
-Engage Q4.1-Q4.8 fully. For each finding, name the specific ethical principle at stake (not just a feeling). Apply the dual-layer transparency test. Surface any rationalization patterns visible in the framing of the question itself. Deliver 4-6 substantive ethical findings with specific principle-grounding. Flag conflicts between ethical positions for Solomon.
+Engage Q4.1-Q4.8 fully. For each finding, name the specific ethical principle at stake (not just a feeling). Apply the dual-layer transparency test. Surface any rationalization patterns visible in the framing of the question itself. Deliver 3-5 substantive ethical findings with specific principle-grounding. Flag conflicts between ethical positions for Solomon.
 
 **Mode C (Exhaustive):**
-Full ethical audit. Apply all eight questions. Map cost-bearers, decision-makers, and beneficiaries. Run the full rationalization diagnostic. Apply domain-specific ethical frameworks where relevant (consequentialist, deontological, virtue ethics — note where they diverge). Identify ethical trade-offs that have no clean resolution and present them as such. Flag the hardest case for Solomon with a specific framing of the dilemma. Deliverable: structured ethical analysis, 500-800 words minimum, organized by principle category.
+Full ethical audit. Apply all eight questions. Map cost-bearers, decision-makers, and beneficiaries. Run the full rationalization diagnostic. Apply domain-specific ethical frameworks where relevant (consequentialist, deontological, virtue ethics — note where they diverge). Identify ethical trade-offs that have no clean resolution and present them as such. Flag the hardest case for Solomon with a specific framing of the dilemma. Deliverable: structured ethical analysis, 500-800 words (hard cap ~1,200), organized by principle category.
 
 ---
 
@@ -180,7 +179,7 @@ Full ethical audit. Apply all eight questions. Map cost-bearers, decision-makers
 
 **Distinct from:**
 - Rules (Seat 5): Ethics = moral compass; Rules = legal/policy constraints. The litmus test: "legal but wrong" and "wrong but legal" are both real phenomena, and both require attention. Use the gap between them as a diagnostic.
-- Voiceless (Seat 7 in STRESS phase): Ethics may identify harm to people in general; Voiceless specifically identifies which harmed people have no voice in this process. They are complementary but not identical.
+- Voiceless (Seat 11 in ELEVATE phase): Ethics may identify harm to people in general; Voiceless specifically identifies which harmed people have no voice in this process. They are complementary but not identical.
 
 **Watch for:**
 - Overlap with Voiceless: when Ethics surfaces harm to a group, confirm whether Voiceless has covered their perspective or whether it's a gap
@@ -343,14 +342,13 @@ Application notes:
 
 ## 5.4 Depth Scaling
 
-**Mode A (Standard — 1-2 findings):**
-Answer Q5.1-Q5.4 with concrete constraint identification. Note the two highest-stakes rules that apply and the most significant liability exposure. Flag if any hard constraints eliminate options being considered. Keep to 3-5 sentences. No deep regulatory mapping.
+**Mode A:** This seat does not run in Mode A (Essential Five = Seats 1, 3, 6, 7, 11), and phase files are never loaded in Mode A. The guidance below applies to Modes B and C only.
 
 **Mode B (Deep — 3-5 findings):**
-Engage Q5.1-Q5.8 fully. Map the full constraint landscape by category (law, contract, policy, soft norms). Identify the most significant liability exposure in each relevant domain. Flag where constraints are ambiguous, in conflict, or actively evolving. Deliver 4-6 findings, distinguished by constraint type (hard vs. soft). Identify documentation gaps.
+Engage Q5.1-Q5.8 fully. Map the full constraint landscape by category (law, contract, policy, soft norms). Identify the most significant liability exposure in each relevant domain. Flag where constraints are ambiguous, in conflict, or actively evolving. Deliver 3-5 findings, distinguished by constraint type (hard vs. soft). Identify documentation gaps.
 
 **Mode C (Exhaustive):**
-Full constraint audit. Map every law, regulatory framework, contract, internal policy, and soft constraint in play. Build the liability exposure map by severity and probability. Identify documentation requirements and gaps. Run the adversarial documentation scan. Produce a due diligence checklist. Deliverable: structured constraint analysis, organized by constraint category, with severity ratings.
+Full constraint audit. Map every law, regulatory framework, contract, internal policy, and soft constraint in play. Build the liability exposure map by severity and probability. Identify documentation requirements and gaps. Run the adversarial documentation scan. Produce a due diligence checklist. Deliverable: structured constraint analysis, organized by constraint category, with severity ratings (hard cap ~1,200 words — overflow becomes one-line entries in the handoff).
 
 ---
 
@@ -378,7 +376,7 @@ Full constraint audit. Map every law, regulatory framework, contract, internal p
 
 **Distinct from:**
 - Ethics (Seat 4): Rules = what is ALLOWED; Ethics = what is RIGHT. The gap between them is often the most important territory in the whole analysis. Never collapse one into the other.
-- Resource (Seat 9 in FIRE phase): watch for constraint framing that is really a resource problem in disguise. "We can't do X" often means "we can't AFFORD to do X" or "we don't have the people to do X" — those are resource constraints, not rule constraints.
+- Resource (Seat 9 in STRESS phase): watch for constraint framing that is really a resource problem in disguise. "We can't do X" often means "we can't AFFORD to do X" or "we don't have the people to do X" — those are resource constraints, not rule constraints.
 
 **Watch for:**
 - Overlap with Ethics: when a legal action is flagged as permitted, ensure Ethics has addressed whether it is right
@@ -612,14 +610,13 @@ Application notes in Mode B/C:
 
 ## 6.4 Depth Scaling
 
-**Mode A (Standard — 1-2 findings):**
-Answer Q6.1-Q6.4 with a concrete emotional landscape map and behavioral forecast. Identify the two most significant emotional dynamics at play and one key behavioral prediction. Name emotions specifically — not "some stakeholders may be concerned" but "the senior engineer who built the original system will feel his domain is being invaded." Deliver in 4-6 sentences.
+**Mode A:** governed solely by SKILL.md's compact definition of this seat — phase files are never loaded in Mode A. The guidance below applies to Modes B and C only.
 
 **Mode B (Deep — 3-5 findings):**
-Engage Q6.1-Q6.8 fully. Map the emotional landscape with specificity. Identify the most important undercurrent that is likely shaping behavior without being named. Name who feels unheard and what that looks like behaviorally. Distinguish between what each key person will say and what they will actually do. Identify the minimum action needed to shift the most critical person from compliance to cooperation. Deliver 5-7 findings, with emotional specificity throughout. Flag the highest-risk emotional dynamic for Solomon.
+Engage Q6.1-Q6.8 fully. Map the emotional landscape with specificity. Identify the most important undercurrent that is likely shaping behavior without being named. Name who feels unheard and what that looks like behaviorally. Distinguish between what each key person will say and what they will actually do. Identify the minimum action needed to shift the most critical person from compliance to cooperation. Deliver 3-5 findings, with emotional specificity throughout. Flag the highest-risk emotional dynamic for Solomon.
 
 **Mode C (Exhaustive):**
-Full emotional systems analysis. Complete emotional landscape map by stakeholder or group. Undercurrent identification with behavioral evidence. Historical wound analysis for key individuals. Behavioral prediction with incentive-alignment analysis. Compliance-vs-cooperation map. Specific trust-building actions for each critical relationship. Deliverable: structured human dynamics analysis, 600-900 words, organized by stakeholder group and emotional theme. Solomon handoff includes explicit behavioral predictions and highest-risk emotional scenario.
+Full emotional systems analysis. Complete emotional landscape map by stakeholder or group. Undercurrent identification with behavioral evidence. Historical wound analysis for key individuals. Behavioral prediction with incentive-alignment analysis. Compliance-vs-cooperation map. Specific trust-building actions for each critical relationship. Deliverable: structured human dynamics analysis, 600-900 words (hard cap ~1,200), organized by stakeholder group and emotional theme. Solomon handoff includes explicit behavioral predictions and highest-risk emotional scenario.
 
 ---
 
@@ -646,10 +643,10 @@ Full emotional systems analysis. Complete emotional landscape map by stakeholder
 **Feeds into:**
 - Solomon's Behavioral meta-lens: This seat provides the raw emotional and behavioral data that Solomon's Behavioral lens uses to identify hidden motivations and predict non-rational decisions. The two are complementary — this seat describes; Solomon's lens interprets at the synthesis level.
 - Adversarial (Seat 7 in STRESS phase): Emotional vulnerabilities are attack surfaces. A person in shame response, or one who feels deeply unheard, is susceptible to exploitation by adversarial actors. This seat's findings directly inform Adversarial's analysis.
-- Execution (Seat 10/11 in FIRE phase): Plans that ignore human emotional dynamics fail at implementation. The behavioral predictions and trust-building requirements identified here must be directly incorporated into execution planning.
+- Execution (Seat 10 in ELEVATE phase): Plans that ignore human emotional dynamics fail at implementation. The behavioral predictions and trust-building requirements identified here must be directly incorporated into execution planning.
 
 **Distinct from:**
-- Voiceless (Seat 7 in STRESS phase): Human looks at how PRESENT people — those actively participating in the situation — feel and will behave. Voiceless looks at ABSENT people — those affected by the situation who have no voice in it. The two seats address different populations, though there is occasional overlap when someone present is effectively voiceless.
+- Voiceless (Seat 11 in ELEVATE phase): Human looks at how PRESENT people — those actively participating in the situation — feel and will behave. Voiceless looks at ABSENT people — those affected by the situation who have no voice in it. The two seats address different populations, though there is occasional overlap when someone present is effectively voiceless.
 - Ethics (Seat 4): When this seat identifies emotional harm — someone being shamed, humiliated, or made to bear invisible costs — the ethical dimensions belong to Ethics. Human names the emotional reality; Ethics evaluates the moral weight of it.
 
 **Watch for:**

@@ -1,0 +1,35 @@
+=============================================================
+TrueCouncilOf12 — REGRESSION QUIZ
+Answer each question in ONE short line, based ONLY on the
+skill text above. Number your answers 1-15. Do not explain.
+=============================================================
+
+1. In Mode A, may you use the Read tool to load phase files?
+
+2. Which seat numbers run in Mode A (Essential Five)?
+
+3. What are the ONLY verdict labels Solomon may return?
+
+4. Seat 1 emits "LOAD-BEARING FACT: NONE — analysis is opinion-only". What is the maximum verdict Solomon can return?
+
+5. The running model is not listed in the Model → Band Table. What do you do?
+
+6. You are running on a COMPACT-band model. Which mode(s) may triage present to the user?
+
+7. What seat number is Voiceless / Absent, and in which phase does it run?
+
+8. A seat has nothing meaningful to contribute. What exact output format must it use?
+
+9. What is the required sentence format for naming the tradeoff in the verdict?
+
+10. How large must Solomon's synthesis be relative to total Council output, and measured how?
+
+11. In which mode do Paired Exchanges run, between which seat pairs, and what is the cap per exchange?
+
+12. The user answers the triage prompt with "adjust". What happens, and how many times can it happen?
+
+13. Triage assessed Time Pressure as URGENT and the logic recommended Mode C. Which mode actually runs?
+
+14. If 3 or more seats would strongly disagree with the verdict during the consensus check, what must Solomon do, and how many times at most?
+
+15. Outside a council session, Claude detects a high-stakes deliverable. May it convene the Council on its own?

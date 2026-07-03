@@ -188,11 +188,11 @@ The question is not "what is most likely?" It is "what is most damaging, even if
 
 ### Depth Scaling
 
-**Mode A (compact):** Answer Q7.1 and Q7.4 only. Name the weakest point. Write the hostile narrative. Two paragraphs maximum.
+**Mode A:** governed solely by SKILL.md's compact definition of this seat (all 4 standard questions apply there) — phase files are never loaded in Mode A. The guidance below applies to Modes B and C only.
 
 **Mode B (standard):** Answer all four Standard Questions with 2-4 sentences each. Add Q7.5 (actor map, top 2-3 actors only). Total output: one page or less.
 
-**Mode C (exhaustive):** Answer all eight questions with full analysis. Build complete actor map. Write the actual hostile press release or forum post. Run the Domain Adaptation Matrix for relevant domains. Identify which attack vectors require immediate remediation vs. monitoring vs. acceptance. Total output: no fixed limit — until coverage is complete.
+**Mode C (exhaustive):** Answer all eight questions with full analysis. Build complete actor map. Write the actual hostile press release or forum post. Run the Domain Adaptation Matrix for relevant domains. Identify which attack vectors require immediate remediation vs. monitoring vs. acceptance. Total output: hard cap ~1,200 words — keep the highest-impact vectors in full and compress the remainder to one-line entries in the handoff.
 
 ---
 
@@ -219,11 +219,11 @@ The question is not "what is most likely?" It is "what is most damaging, even if
 
 **Adversarial vs. Risk (Seat 8):** The most important boundary in this phase. Keep it explicit. If the threat requires an intelligent actor to materialize, it belongs here. If it can happen with no one trying, it belongs in Risk. When a scenario has both dimensions — a threat that starts as adversarial and becomes systemic — note both, but anchor it in the seat where the primary driver lives.
 
-**Adversarial feeds into Rules (Seat 4):** Adversarial findings often reveal gaps in the constraint architecture. An adversary who can exploit a loophole in the rules is telling you the rules need amendment. Pass specific rule vulnerabilities to Rules for remediation.
+**Adversarial feeds into Rules (Seat 5):** Adversarial findings often reveal gaps in the constraint architecture. An adversary who can exploit a loophole in the rules is telling you the rules need amendment. Pass specific rule vulnerabilities to Rules for remediation.
 
 **Adversarial feeds into Human (Seat 6):** Adversaries exploit emotional vulnerabilities — they know when creators are tired, when teams are demoralized, when a founder is desperate. Human dynamics that look like internal friction at Seat 6 may be adversarially exacerbated. Cross-reference.
 
-**Watch for overlap with Ethics (Seat 5):** Some adversarial defense postures raise ethical questions. Monitoring employees to detect insider threats. Pre-emptive legal action. Information asymmetry strategies. These are not automatically wrong, but they require explicit ethical clearance. Flag them for Seat 5.
+**Watch for overlap with Ethics (Seat 4):** Some adversarial defense postures raise ethical questions. Monitoring employees to detect insider threats. Pre-emptive legal action. Information asymmetry strategies. These are not automatically wrong, but they require explicit ethical clearance. Flag them for Seat 4.
 
 ---
 
@@ -430,11 +430,11 @@ Recovery time has a threshold. Below the threshold, it is an inconvenience. Abov
 
 ### Depth Scaling
 
-**Mode A (compact):** Answer Q8.1 (list only, no analysis), Q8.2 (one sentence on worst case), and Q8.4 (one sentence on each high-priority item: backup exists or "none — accepted"). No cascade analysis.
+**Mode A:** This seat does not run in Mode A (Essential Five = Seats 1, 3, 6, 7, 11), and phase files are never loaded in Mode A. The guidance below applies to Modes B and C only.
 
 **Mode B (standard):** All four standard questions with 3-5 sentences each. Include Q8.5 (name single points of failure). Use the probability × impact framework explicitly to sort the Q8.1 inventory. One page maximum.
 
-**Mode C (exhaustive):** All eight questions with full analysis. Build a risk register: each failure mode gets probability rating, impact rating, detection time estimate, recovery time estimate, and mitigation status. Walk at least one full cascade. Identify all tail events and give each a stated response protocol. No fixed length — until the register is complete.
+**Mode C (exhaustive):** All eight questions with full analysis. Build a risk register: each failure mode gets probability rating, impact rating, detection time estimate, recovery time estimate, and mitigation status. Walk at least one full cascade. Identify all tail events and give each a stated response protocol. Hard cap ~1,200 words — register entries beyond the cap become one-line rows (name, probability×impact, mitigation status).
 
 ---
 
@@ -460,7 +460,7 @@ Recovery time has a threshold. Below the threshold, it is an inconvenience. Abov
 
 **Risk feeds into Resource (Seat 9):** Risk mitigation costs resources. Backup systems cost money. Redundancy costs time to build and maintain. Monitoring costs attention. When Seat 9 assesses resources, it must account for the cost of the risk mitigations that Seat 8 identified as necessary. A plan that is resource-efficient but fragile is not actually efficient — it is deferring costs to the moment of failure.
 
-**Risk feeds into Execution (Seats 10-12 in ELEVATE/EXECUTE phases):** Plans that come out of STRESS with identified failure modes need those failure modes built into execution plans. A plan that doesn't account for its own failure modes will fail in execution.
+**Risk feeds into Execution (Seat 10 in ELEVATE phase):** Plans that come out of STRESS with identified failure modes need those failure modes built into execution plans. A plan that doesn't account for its own failure modes will fail in execution.
 
 **Watch for overlap with Systems (Seat 3):** Systems analysis (in GROUND) asks why things are structured the way they are and where the structural flaws lie. Risk asks what specifically breaks and what the consequences are. The two are complementary — Systems gives you the structural diagnosis, Risk gives you the failure inventory. If GROUND identified systemic tensions, those tensions are candidate items for the Risk failure inventory.
 
@@ -696,11 +696,11 @@ A plan that spends renewable resources to build renewable or expanding assets is
 
 ### Depth Scaling
 
-**Mode A (compact):** Answer Q9.1 (one sentence per cost category), Q9.2 (return in one sentence), and Q9.4 (name the top alternative and what it would produce). Skip hidden costs, diminishing returns, and full opportunity cost analysis.
+**Mode A:** This seat does not run in Mode A (Essential Five = Seats 1, 3, 6, 7, 11), and phase files are never loaded in Mode A. The guidance below applies to Modes B and C only.
 
 **Mode B (standard):** All four standard questions with 3-5 sentences each. Include Q9.6 (hidden costs, 2-3 items). Include explicit comparison of this plan vs. one primary alternative (Q9.5). One to two pages.
 
-**Mode C (exhaustive):** All eight questions with full analysis. Build a complete resource ledger: every cost category, full opportunity cost comparison with at least two alternatives, hidden cost inventory, sustainability model with breaking point identified, diminishing returns curve at least estimated qualitatively, and explicit assessment of renewable vs. finite resource expenditure. No fixed length — until the ledger is complete.
+**Mode C (exhaustive):** All eight questions with full analysis. Build a complete resource ledger: every cost category, full opportunity cost comparison with at least two alternatives, hidden cost inventory, sustainability model with breaking point identified, diminishing returns curve at least estimated qualitatively, and explicit assessment of renewable vs. finite resource expenditure. Hard cap ~1,200 words — ledger items beyond the cap become one-line rows.
 
 ---
 
@@ -726,11 +726,11 @@ A plan that spends renewable resources to build renewable or expanding assets is
 
 **Resource feeds into Execution (downstream phases):** Resource availability determines what execution plans are actually feasible. A plan that is strategically sound but requires resources that don't exist is not a plan — it is a wish. The resource analysis here must be handed forward to execution planning so that execution plans are built within real constraints, not assumed ones.
 
-**Resource feeds into Solomon (Seat 12):** When the council reaches Solomon, one of the most common challenges is navigating between ethical ideals and practical constraints. Resource analysis provides Solomon with the honest accounting of what is actually affordable. An ethically ideal solution that is not resourceable is not a real option — it is a standard, not a choice.
+**Resource feeds into Solomon (the coordinator, not a numbered seat):** When the council reaches Solomon, one of the most common challenges is navigating between ethical ideals and practical constraints. Resource analysis provides Solomon with the honest accounting of what is actually affordable. An ethically ideal solution that is not resourceable is not a real option — it is a standard, not a choice.
 
 **Watch for overlap with Risk (Seat 8):** Some risks are disguised resource problems. "We can't afford to lose this customer" is a resource dependency risk. "We have no budget for compliance work" is a resource gap that creates regulatory risk. Items that appeared in the Risk register may reappear here as resource allocation questions.
 
-**Watch for overlap with Rules (Seat 4):** Some constraints that were framed as rules ("we can't do that") are actually resource constraints ("we can't afford to do that right now"). Seat 9 may clarify which "rule" constraints are genuinely binding vs. temporarily binding based on resource availability. This distinction changes the remediation strategy.
+**Watch for overlap with Rules (Seat 5):** Some constraints that were framed as rules ("we can't do that") are actually resource constraints ("we can't afford to do that right now"). Seat 9 may clarify which "rule" constraints are genuinely binding vs. temporarily binding based on resource availability. This distinction changes the remediation strategy.
 
 ---
 
@@ -835,7 +835,7 @@ This does not make the plan correct — ELEVATE (Seats 10-12) will challenge ass
 
 If a plan fails badly at any STRESS seat, the council has options:
 
-- **Remediate and re-run**: fix the identified weakness and re-run the affected seat before proceeding
+- **Remediate and re-run**: fix the identified weakness and re-run the affected seat before proceeding — at most ONE re-run per seat per session; if the seat fails again, do not loop: carry the failure into Solomon's synthesis as a standing condition
 - **Scope reduction**: reduce the plan's scope to eliminate the fragile element, then re-run
 - **Conditions on proceed**: document the specific conditions that must be met before the plan can safely proceed
 - **Kill**: some plans fail STRESS because they are fundamentally unsound and the failure cannot be remediated within the plan's premises — in those cases, the council's job is to say so clearly and redirect resources

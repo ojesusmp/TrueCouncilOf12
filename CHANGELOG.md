@@ -1,5 +1,64 @@
 # TrueCouncilOf12 — Changelog
 
+## v4 Hardening (2026-07-03)
+
+Full skill-hardener pipeline pass: recon → gap analysis → rewrite → mechanical gate →
+adversarial audit until dry → cross-model verification → repo sweep. Pre-edit snapshot:
+`.backup/pre-v4-hardening/`. (The v3 snapshot `.backup/pre-v3-hardening/` referenced
+below is no longer present locally; v3's rollback commands are therefore historical.)
+
+### Staleness inventory (Phase 0)
+
+- Model rules one generation stale (Opus 4.7 / Sonnet 4.6 era); the running model (Fable 5) absent from every table — capability check had no row to consult
+- guide.html was a pre-v3 relic: "v1.0" badge, "Solomon — The 13th Seat" (contradicting SKILL.md), `council-of-12` paths throughout
+- Dead references: `.backup/pre-v3-hardening/` missing, rollback commands unrunnable; no mechanical gate existed
+- Frontmatter "do not auto-fire" contradicted the body's auto-trigger section
+
+### Fix registry (v4)
+
+| Area | Fix |
+|------|-----|
+| Models | FRONTIER / MID / COMPACT capability bands; model names isolated in ONE table (Model → Band Table); unknown-model rule: assume MID, say so, proceed |
+| Cross-refs | 17 wrong seat numbers / phase names fixed across bound/stress/elevate (incl. nonexistent "FIRE" and "EXECUTE" phases) |
+| Mode A | Phase files no longer define Mode A depth (contradicted the self-contained rule); Seat 7 gains a CHEAPEST TEST line; Mode A template gains LOAD-BEARING FACT / IF FALSE slots |
+| Caps | Mode C hard cap ~1,200 words/seat in all 12 seats; degradation thresholds ~8k (B) / ~16k (C) with shown arithmetic for both modes; Paired Exchange caps ~100 words (tokens are unobservable) with truncate-and-move-on |
+| Loops | One seat re-run max; one consensus reconsideration max; one re-triage max; rollback gate decidable per run |
+| Triage | Null-situation rule (shortcuts included); decline/question branches defined; CREATIVE + MEDICAL domains added; LOW+COMPLEX/SYSTEMIC and a catch-all default → Mode B; shortcuts never bypass the band check |
+| Template | Mode C deduplicated (631→417 lines, drift surface removed); missing Paired Exchanges slot added; consensus tiers aligned (Agrees / Mild dissent / Strong dissent + RECONSIDERED slot); CHEAPEST placeholders for Seats 7-9; SYNTHESIS RATIO placeholder; Stakes header field |
+| Escalation | Mid-session A→B/C mechanics defined: keep prior seat outputs, run remaining seats deeper, deepen a prior seat only if decision-critical (stated in one line) |
+| Fragility | Phase files load from the skill's base directory (no hardcoded install path); template-only-failure rule (proceed via handoff formats); cache-TTL claim softened; NO FINDING exempt from clause (d); Exchange 1 skip rule when LOAD-BEARING FACT is NONE |
+
+### Audit trail (Phase 4 — independent adversarial auditors, quote-verified findings only)
+
+| Round | Scope | Found | Fixed | Prior fixes verified |
+|-------|-------|-------|-------|----------------------|
+| 1 | Two auditors, disjoint classes (loops/waste/contradictions ∥ undefined/fragility) | 22 unique | 22 | — |
+| 2 | Full re-verify + seam hunt | 8 | 8 | 22/22 FIXED |
+| 3 | Full re-verify + seam hunt | 3 | 3 | 9/9 FIXED |
+| 4 | Final sweep (round budget cap) | 1 | 1 | 3/3 FIXED |
+
+Convergence trend 22 → 8 → 3 → 1. Round 4's single finding was a one-line missing
+template placeholder (SYNTHESIS RATIO), applied and grep-verified directly rather than
+spending a fifth round the pipeline's own budget forbids.
+
+### Mechanical gate (Phases 3 + 5)
+
+- `test/quiz.txt` — 15 regression questions, one per behavioral rule (including every rule v4 added). Expected answers live in README.md beside the run command. Never embed a copy of the skill in the gate — it pipes the live SKILL.md.
+- Cross-model gate RUN 2026-07-03 on two tiers (one COMPACT-band model, one MID-band model — see the Model → Band Table in SKILL.md for the current lineup): **15/15 and 15/15** matches against the README expected answers. Identical rule readings across tiers.
+- Note for future automated gates: the literal string "Seat 7 in STRESS" legitimately appears twice in `bound.md` describing the **Adversarial** seat (correct); only Voiceless-context uses of it are defects. A naive zero-hit grep on that bare string is a false failure.
+
+### Post-verification behavioral find (2026-07-03, council self-review)
+
+Running the hardened council ON ITSELF (Mode C) exposed a defect class all four text
+audits structurally could not see: **the skill loader performs positional-argument
+substitution on `$`-tokens in SKILL.md** — the file's two dollar-zero literals in the
+CHEAPEST TEST lines rendered as the first word of the invocation arguments, silently
+splicing user text into the standing rules. Fix: both literals replaced with "zero-cost";
+a mandatory pre-ship grep tripwire added to README (zero `$`-token lines in SKILL.md).
+Phase files are immune (loaded via Read, no substitution). Lesson recorded: static text
+verification is not rendering verification — one live invocation is now part of the
+evidence bar.
+
 ## 2026-05-10 — Renamed to TrueCouncilOf12 + first GitHub publish
 
 - Folder renamed: `council-of-12` → `TrueCouncilOf12` (canonical: `~/.claude/skills/TrueCouncilOf12/`)

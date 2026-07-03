@@ -12,7 +12,7 @@ Mode A output is embedded directly in SKILL.md and is not here.
 # COUNCIL OF 12 — FULL ANALYSIS
 
 **Situation:** [detailed description of what is being analyzed]
-**Mode:** Full Council (Mode B) | **Date:** [date] | **Model:** [model]
+**Mode:** Full Council (Mode B) | **Stakes:** [level] | **Date:** [date] | **Model:** [model]
 
 ---
 
@@ -20,6 +20,9 @@ Mode A output is embedded directly in SKILL.md and is not here.
 
 ### Seat 1: Truth / Evidence
 **Core question:** What do we actually know?
+
+LOAD-BEARING FACT: [the single fact this entire analysis rests on, or NONE — analysis is opinion-only]
+IF FALSE: [what becomes invalid downstream if this fact is wrong]
 
 [Finding 1 — state what is factually established, cite evidence or source]
 
@@ -121,6 +124,8 @@ Mode A output is embedded directly in SKILL.md and is not here.
 
 [Finding 5 — deliberate exploitation vectors, bad-faith actors, worst-case misuse]
 
+CHEAPEST DISCONFIRMING TEST: [$0, ≤72h action that would falsify the most dangerous vector — omit if the seat returned NO FINDING]
+
 ### Seat 8: Risk / Fragility
 **Core question:** What goes wrong by accident?
 
@@ -134,6 +139,8 @@ Mode A output is embedded directly in SKILL.md and is not here.
 
 [Finding 5 — unintended failures, cascade effects, brittleness under stress]
 
+CHEAPEST DETECTION PROBE: [$0, ≤72h action that surfaces the highest-impact unmitigated risk if it is real — omit if the seat returned NO FINDING]
+
 ### Seat 9: Resource / Tradeoff
 **Core question:** What does this cost, including what we give up?
 
@@ -146,6 +153,8 @@ Mode A output is embedded directly in SKILL.md and is not here.
 [Finding 4 — time, money, attention, opportunity cost, what alternatives are foreclosed]
 
 [Finding 5 — time, money, attention, opportunity cost, what alternatives are foreclosed]
+
+CHEAPEST OPPORTUNITY-COST CHECK: [$0, ≤72h action that reveals whether these resources would yield more elsewhere — omit if the seat returned NO FINDING]
 
 **Phase summary:** [2-3 sentences capturing vulnerabilities found by Seats 7-9. What are the highest-probability failure modes? What costs are being underestimated?]
 
@@ -238,18 +247,20 @@ For each of the 12 seats: would this seat agree with the verdict? Flag strong di
 
 | Seat | Role | Verdict Alignment | Notes |
 |------|------|-------------------|-------|
-| Seat 1 | Truth / Evidence | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 2 | Context / Pattern | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 3 | Systems / Root Cause | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 4 | Ethics / Conscience | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 5 | Rules / Constraints | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 6 | Human / Emotional | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 7 | Adversarial / Attack | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 8 | Risk / Fragility | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 9 | Resource / Tradeoff | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 10 | Execution / Feasibility | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 11 | Voiceless / Absent | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 12 | Innovation / Possibility | [Agrees / Partial / Disagrees] | [brief reason] |
+| Seat 1 | Truth / Evidence | [Agrees / Mild dissent / Strong dissent] | [brief reason] |
+| Seat 2 | Context / Pattern | [Agrees / Mild dissent / Strong dissent] | [brief reason] |
+| Seat 3 | Systems / Root Cause | [Agrees / Mild dissent / Strong dissent] | [brief reason] |
+| Seat 4 | Ethics / Conscience | [Agrees / Mild dissent / Strong dissent] | [brief reason] |
+| Seat 5 | Rules / Constraints | [Agrees / Mild dissent / Strong dissent] | [brief reason] |
+| Seat 6 | Human / Emotional | [Agrees / Mild dissent / Strong dissent] | [brief reason] |
+| Seat 7 | Adversarial / Attack | [Agrees / Mild dissent / Strong dissent] | [brief reason] |
+| Seat 8 | Risk / Fragility | [Agrees / Mild dissent / Strong dissent] | [brief reason] |
+| Seat 9 | Resource / Tradeoff | [Agrees / Mild dissent / Strong dissent] | [brief reason] |
+| Seat 10 | Execution / Feasibility | [Agrees / Mild dissent / Strong dissent] | [brief reason] |
+| Seat 11 | Voiceless / Absent | [Agrees / Mild dissent / Strong dissent] | [brief reason] |
+| Seat 12 | Innovation / Possibility | [Agrees / Mild dissent / Strong dissent] | [brief reason] |
+
+[If 3+ seats register Strong dissent: **RECONSIDERED:** [explanation — one reconsideration maximum; the revised verdict is final]]
 
 ---
 
@@ -269,260 +280,51 @@ For each of the 12 seats: would this seat agree with the verdict? Flag strong di
 
 **Next step:** [The single most important action to take first. Specific, assigned, time-bound.]
 
+SYNTHESIS RATIO: [N]% [synthesis words ÷ total Council output words — must be ≥30% and the synthesis longer than any individual seat]
+
 ---
 ---
+
 
 # MODE C TEMPLATE — Full Pipeline Report
 
-Mode C includes everything in Mode B above, plus the additional sections shown below.
-Insert the Extended Deliberation Log, Reconciliation Matrix, and Strategic Applications
-between the Consensus Check and the Verdict.
+Mode C REUSES the entire Mode B template above — same seat sections (at Mode C depth),
+same phase summaries, same Solomon synthesis structure. Do not duplicate it; render from
+the Mode B template with these changes:
+
+1. **Header:** title the report `COUNCIL OF 12 — FULL PIPELINE ANALYSIS` and set
+   `Mode: Full Pipeline (Mode C)`.
+2. **After Seat 12, before Solomon's Synthesis,** insert the Paired Exchanges block below
+   (mandated by SKILL.md for Mode C).
+3. **Between the Consensus Check and the Verdict,** insert the Extended Deliberation Log,
+   Reconciliation Matrix, and Strategic Applications sections below.
+4. **Replace the Mode B VERDICT block** with the extended Mode C VERDICT block below.
 
 ---
 
-# COUNCIL OF 12 — FULL PIPELINE ANALYSIS
+## PAIRED EXCHANGES (Mode C only — insert after Seat 12, before Solomon's Synthesis)
 
-**Situation:** [detailed description of what is being analyzed]
-**Mode:** Full Pipeline (Mode C) | **Date:** [date] | **Model:** [model]
+**Exchange 1 — Truth (Seat 1) ↔ Adversarial (Seat 7), on the LOAD-BEARING FACT:**
 
----
+[If Seat 1 emitted LOAD-BEARING FACT: NONE, write "SKIPPED — no load-bearing fact to attack; REVISE cap applies" and move to Exchange 2.]
 
-## GROUND — Establish Reality
+[Seat 7's single most dangerous attack on the LOAD-BEARING FACT — one attack, not all possible attacks]
 
-### Seat 1: Truth / Evidence
-**Core question:** What do we actually know?
+[Seat 1 concedes (and amends the LOAD-BEARING FACT line) or rebuts with one piece of concrete evidence]
 
-[Finding 1 — state what is factually established, cite evidence or source]
+(One round. Hard cap: ~100 words (≈150 tokens) total across both turns; if exceeded, truncate and move on.)
 
-[Finding 2 — state what is factually established, cite evidence or source]
+**Exchange 2 — Ethics (Seat 4) ↔ Adversarial (Seat 7), on harm/principle:**
 
-[Finding 3 — state what is factually established, cite evidence or source]
+[Seat 7 names the cheapest way the developing verdict harms the Voiceless or violates a stated principle]
 
-[Finding 4 — state what is factually established, cite evidence or source]
+[Seat 4 concedes or rebuts]
 
-[Finding 5 — state what is factually established, cite evidence or source]
-
-### Seat 2: Context / Pattern
-**Core question:** What led here? What does the pattern say?
-
-[Finding 1 — historical context, prior events, established trends]
-
-[Finding 2 — historical context, prior events, established trends]
-
-[Finding 3 — historical context, prior events, established trends]
-
-[Finding 4 — historical context, prior events, established trends]
-
-[Finding 5 — historical context, prior events, established trends]
-
-### Seat 3: Systems / Root Cause
-**Core question:** What is the real mechanism at work?
-
-[Finding 1 — the underlying structure or dynamic driving this situation]
-
-[Finding 2 — the underlying structure or dynamic driving this situation]
-
-[Finding 3 — the underlying structure or dynamic driving this situation]
-
-[Finding 4 — the underlying structure or dynamic driving this situation]
-
-[Finding 5 — the underlying structure or dynamic driving this situation]
-
-**Phase summary:** [2-3 sentences capturing the reality established by Seats 1-3.]
+(One round. Hard cap: ~100 words (≈150 tokens) total across both turns; if exceeded, truncate and move on.)
 
 ---
 
-## BOUND — Establish Constraints
-
-### Seat 4: Ethics / Conscience
-**Core question:** Is this right?
-
-[Finding 1 — moral obligations, values at stake, who could be harmed]
-
-[Finding 2 — moral obligations, values at stake, who could be harmed]
-
-[Finding 3 — moral obligations, values at stake, who could be harmed]
-
-[Finding 4 — moral obligations, values at stake, who could be harmed]
-
-[Finding 5 — moral obligations, values at stake, who could be harmed]
-
-### Seat 5: Rules / Constraints
-**Core question:** What are the hard boundaries?
-
-[Finding 1 — legal, contractual, regulatory, or physical constraints that cannot be violated]
-
-[Finding 2 — legal, contractual, regulatory, or physical constraints that cannot be violated]
-
-[Finding 3 — legal, contractual, regulatory, or physical constraints that cannot be violated]
-
-[Finding 4 — legal, contractual, regulatory, or physical constraints that cannot be violated]
-
-[Finding 5 — legal, contractual, regulatory, or physical constraints that cannot be violated]
-
-### Seat 6: Human / Emotional
-**Core question:** How will people actually feel and behave?
-
-[Finding 1 — emotional responses, psychological reactions, behavioral predictions]
-
-[Finding 2 — emotional responses, psychological reactions, behavioral predictions]
-
-[Finding 3 — emotional responses, psychological reactions, behavioral predictions]
-
-[Finding 4 — emotional responses, psychological reactions, behavioral predictions]
-
-[Finding 5 — emotional responses, psychological reactions, behavioral predictions]
-
-**Phase summary:** [2-3 sentences capturing the constraints identified by Seats 4-6.]
-
----
-
-## STRESS — Pressure Test
-
-### Seat 7: Adversarial / Attack
-**Core question:** How would someone break this on purpose?
-
-[Finding 1 — deliberate exploitation vectors, bad-faith actors, worst-case misuse]
-
-[Finding 2 — deliberate exploitation vectors, bad-faith actors, worst-case misuse]
-
-[Finding 3 — deliberate exploitation vectors, bad-faith actors, worst-case misuse]
-
-[Finding 4 — deliberate exploitation vectors, bad-faith actors, worst-case misuse]
-
-[Finding 5 — deliberate exploitation vectors, bad-faith actors, worst-case misuse]
-
-### Seat 8: Risk / Fragility
-**Core question:** What goes wrong by accident?
-
-[Finding 1 — unintended failures, cascade effects, brittleness under stress]
-
-[Finding 2 — unintended failures, cascade effects, brittleness under stress]
-
-[Finding 3 — unintended failures, cascade effects, brittleness under stress]
-
-[Finding 4 — unintended failures, cascade effects, brittleness under stress]
-
-[Finding 5 — unintended failures, cascade effects, brittleness under stress]
-
-### Seat 9: Resource / Tradeoff
-**Core question:** What does this cost, including what we give up?
-
-[Finding 1 — time, money, attention, opportunity cost, what alternatives are foreclosed]
-
-[Finding 2 — time, money, attention, opportunity cost, what alternatives are foreclosed]
-
-[Finding 3 — time, money, attention, opportunity cost, what alternatives are foreclosed]
-
-[Finding 4 — time, money, attention, opportunity cost, what alternatives are foreclosed]
-
-[Finding 5 — time, money, attention, opportunity cost, what alternatives are foreclosed]
-
-**Phase summary:** [2-3 sentences capturing vulnerabilities found by Seats 7-9.]
-
----
-
-## ELEVATE — Expand Options
-
-### Seat 10: Execution / Feasibility
-**Core question:** Can we actually do this?
-
-[Finding 1 — implementation reality, capability gaps, operational requirements]
-
-[Finding 2 — implementation reality, capability gaps, operational requirements]
-
-[Finding 3 — implementation reality, capability gaps, operational requirements]
-
-[Finding 4 — implementation reality, capability gaps, operational requirements]
-
-[Finding 5 — implementation reality, capability gaps, operational requirements]
-
-### Seat 11: Voiceless / Absent
-**Core question:** Who is affected but has no voice?
-
-[Finding 1 — stakeholders not in the room, downstream effects on silent parties]
-
-[Finding 2 — stakeholders not in the room, downstream effects on silent parties]
-
-[Finding 3 — stakeholders not in the room, downstream effects on silent parties]
-
-[Finding 4 — stakeholders not in the room, downstream effects on silent parties]
-
-[Finding 5 — stakeholders not in the room, downstream effects on silent parties]
-
-### Seat 12: Innovation / Possibility
-**Core question:** What better option are we not seeing?
-
-[Finding 1 — reframes, creative alternatives, options outside the original frame]
-
-[Finding 2 — reframes, creative alternatives, options outside the original frame]
-
-[Finding 3 — reframes, creative alternatives, options outside the original frame]
-
-[Finding 4 — reframes, creative alternatives, options outside the original frame]
-
-[Finding 5 — reframes, creative alternatives, options outside the original frame]
-
-**Phase summary:** [2-3 sentences capturing the expanded perspective from Seats 10-12.]
-
----
-
-## SOLOMON'S SYNTHESIS
-
-### Patterns (cross-seat confirmation)
-Issues seen by multiple seats — high confidence signals.
-
-- **Pattern 1:** [description] — Seen by: [seat list]
-- **Pattern 2:** [description] — Seen by: [seat list]
-- **Pattern 3:** [description] — Seen by: [seat list]
-
-### Tensions (cross-seat disagreement)
-Where seats pull in different directions — these are the most important findings.
-
-- **Tension 1:** [Seat X] says [A] but [Seat Y] says [B] — the resolution determines the verdict
-- **Tension 2:** [Seat X] says [A] but [Seat Y] says [B] — the resolution determines the verdict
-- **Tension 3:** [Seat X] says [A] but [Seat Y] says [B] — the resolution determines the verdict
-
-### Meta-Lens Insights
-
-**Behavioral:** [Hidden motivations, ego, fear, tribalism, status preservation — what a behavioral psychologist sees beneath the surface of this situation]
-
-**Strategic:** [Power dynamics, leverage points, who benefits, who loses, what unstated agendas are at play — what a strategist sees]
-
-**Meaning:** [Purpose alignment, identity stakes, legacy implications, who are we becoming through this choice — what a philosopher sees]
-
-### Solomon's Deliberation
-Solomon's 5 questions answered:
-
-1. **Which seat is most critical here?** [The one seat whose perspective is most determinative of the outcome — and why]
-
-2. **Which seat is being ignored?** [The perspective that has been systematically underweighted — and what changes if we take it seriously]
-
-3. **What truth is uncomfortable but necessary?** [The finding that no one wants to say out loud but that the analysis demands be said]
-
-4. **What action is wise, proportionate, and sustainable?** [Not the boldest option, not the safest — the one that holds up under pressure and across time]
-
-5. **What decision can survive time, scrutiny, and consequence?** [The verdict that the decision-maker will still be able to defend in a year, after seeing the results]
-
-### Consensus Check
-For each of the 12 seats: would this seat agree with the verdict? Flag strong disagreements.
-
-| Seat | Role | Verdict Alignment | Notes |
-|------|------|-------------------|-------|
-| Seat 1 | Truth / Evidence | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 2 | Context / Pattern | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 3 | Systems / Root Cause | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 4 | Ethics / Conscience | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 5 | Rules / Constraints | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 6 | Human / Emotional | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 7 | Adversarial / Attack | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 8 | Risk / Fragility | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 9 | Resource / Tradeoff | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 10 | Execution / Feasibility | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 11 | Voiceless / Absent | [Agrees / Partial / Disagrees] | [brief reason] |
-| Seat 12 | Innovation / Possibility | [Agrees / Partial / Disagrees] | [brief reason] |
-
----
+## MODE-C-ONLY SYNTHESIS SECTIONS (insert between Consensus Check and Verdict)
 
 ### Extended Deliberation Log
 [Solomon's detailed reasoning process. How did he weigh competing seats against each other? Which meta-lens proved most decisive in resolving the key tensions? What option did he nearly choose before rejecting it — and what tipped the balance? What would need to be different about the situation for him to decide differently? This is the record of Solomon's internal deliberation, not just his conclusion.]
@@ -581,6 +383,8 @@ For each of the 12 seats: would this seat agree with the verdict? Flag strong di
 1. [Immediate action — today. Specific, assigned, no ambiguity about what "done" looks like.]
 2. [Short-term action — this week. Builds on step 1 or runs in parallel.]
 3. [Medium-term action — this month. Sets up the conditions for the decision to succeed long-term.]
+
+SYNTHESIS RATIO: [N]% [synthesis words ÷ total Council output words — must be ≥30% and the synthesis longer than any individual seat]
 
 ---
 ---

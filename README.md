@@ -1,6 +1,6 @@
 # TrueCouncilOf12
 
-> Universal 12-lens decision analysis with Solomon coordinator. v3-hardened. Formerly named `council-of-12`.
+> Universal 12-lens decision analysis with Solomon coordinator. v4-hardened. Formerly named `council-of-12`.
 
 ## What it does
 
@@ -35,9 +35,66 @@ Surgical adoption of marketing-council v2→v3 lessons. Architecture preserved (
 - **E5 — LOAD-BEARING FACT tag** opens every Seat 1 output (`LOAD-BEARING FACT: [X]. IF FALSE: [consequence].`)
 - **E6 — Solomon synthesis ≥ 30%** of total output (operationalizes Rule #11); `SYNTHESIS RATIO: [N]%` reported at end
 - **E7 — Mode C Paired Exchanges**: Seat 1 ↔ Seat 7 on load-bearing fact, Seat 4 ↔ Seat 7 on harm/principle (150-token cap per exchange)
-- **E8 — Model IDs updated** to Claude 4.x: Opus 4.7 (`claude-opus-4-7`), Sonnet 4.6 (`claude-sonnet-4-6`), Haiku 4.5 (`claude-haiku-4-5-20251001`). Extended-thinking note for Mode C on Opus 4.7.
+- **E8 — Model IDs updated** to Claude 4.x (superseded by v4's band system — see below).
 
-Full edit registry, rollback order, and pre-edit backup snapshot: see `CHANGELOG.md` and `.backup/pre-v3-hardening/`.
+Full edit registry and rollback order: see `CHANGELOG.md`. (The v3 pre-edit snapshot `.backup/pre-v3-hardening/` is no longer present locally; the current snapshot is `.backup/pre-v4-hardening/`.)
+
+## v4 Hardening (2026-07-03)
+
+Full skill-hardener pipeline pass (recon → gap analysis → rewrite → gate → adversarial audit → cross-model verification). Headline fixes:
+
+- **Capability bands replace hardcoded model rules.** All mode-capability rules now reference FRONTIER / MID / COMPACT bands; model names live in exactly ONE spot (the Model → Band Table in `SKILL.md`) with an explicit unknown-model fallback (assume MID, say so, proceed). The skill no longer breaks when the model lineup changes.
+- **16 wrong cross-seat references fixed** in `bound.md`, `stress.md`, `elevate.md` (stale seat numbers and two phase names — "FIRE", "EXECUTE" — from a pre-council numbering).
+- **Mode A contradictions removed from phase files** (they defined Mode A depth for seats that never run in Mode A, and one contradicted SKILL.md's all-4-questions rule). Phase files now defer to SKILL.md for Mode A entirely.
+- **Mode B finding counts aligned** to 3-5 everywhere; **Mode C output hard-capped** (~1,200 words/seat) — no more "no fixed length".
+- **Loop caps added**: one seat re-run max after a STRESS failure; one consensus reconsideration max; one re-triage max on "adjust" (now defined).
+- **Activation contradiction resolved**: the skill never auto-fires; trigger phrases are recognition vocabulary for explicit asks only.
+- **Synthesis ratio now measurable**: word count, not token count.
+- **`templates/report.md` deduplicated** (Mode C no longer carries a full copy of Mode B — 631→417 lines) and the previously missing **Paired Exchanges slot added** to the Mode C template.
+- **Mechanical gate added**: `test/quiz.txt` (see Testing below).
+
+## Testing (the mechanical gate)
+
+Pipe the LIVE skill text plus the quiz to a cheap model (never embed a copy of the skill — copies drift):
+
+```bash
+# bash
+cat SKILL.md test/quiz.txt | claude -p --model haiku
+```
+```powershell
+# PowerShell
+Get-Content SKILL.md, test\quiz.txt | claude -p --model haiku
+```
+
+**Pre-ship tripwire (mandatory before committing any SKILL.md edit):**
+
+```bash
+grep -nE '\$[0-9A-Za-z{]' SKILL.md   # MUST return zero lines
+```
+
+The skill loader substitutes positional arguments into `$`-tokens in SKILL.md at load
+time — a literal like a dollar amount silently becomes whatever the user typed as
+arguments, corrupting the rule text per invocation. Discovered live 2026-07-03 when the
+council analyzed itself. Phase files are immune (loaded via the Read tool, no
+substitution); only SKILL.md needs the check.
+
+Expected answers (any drift means an edit broke a rule):
+
+1. No — Mode A is self-contained; never Read phase files.
+2. Seats 1, 3, 6, 7, 11.
+3. PROCEED / REVISE — needs: [X] / STOP.
+4. REVISE (cannot return PROCEED).
+5. Assume MID band, state the assumption in one triage line, and proceed.
+6. Mode A only.
+7. Seat 11, ELEVATE phase.
+8. `NO FINDING — would have flagged if: [X]`.
+9. "We sacrifice X to protect Y because Z."
+10. At least 30% of total Council output by word count AND longer than any individual seat.
+11. Mode C only; Seat 1↔7 and Seat 4↔7; ~100 words (≈150 tokens) per exchange.
+12. Re-run triage Steps 1-4 once with corrected inputs and re-present; ONE re-triage maximum.
+13. Mode B (URGENT downgrades one mode).
+14. Reconsider the verdict; at most ONE reconsideration; the revised verdict is final.
+15. No — never convene unasked; at most a one-sentence mention that the Council is available.
 
 ## Installation
 
@@ -106,13 +163,13 @@ SYNTHESIS RATIO: [N]%
 
 ## Best practices for runtime model selection
 
-| Mode | Recommended model | Why |
+| Mode | Recommended band | Why |
 |------|------------------|-----|
-| A | Haiku 4.5 or Sonnet 4.6 | Compact, fast, deterministic |
-| B | Sonnet 4.6 | Standard balance |
-| C | Opus 4.7 with extended thinking | Synthesis weight rule + Paired Exchanges benefit from extra reasoning budget |
+| A | COMPACT or MID | Compact, fast, deterministic |
+| B | MID | Standard balance |
+| C | FRONTIER with extended thinking | Synthesis weight rule + Paired Exchanges benefit from extra reasoning budget |
 
-Prompt cache (5-min TTL) keeps phase files warm across iterations — keep iteration cycles tight.
+Model names map to bands in exactly ONE place: the **Model → Band Table** in `SKILL.md`. When the lineup changes, update that table and nothing else. Provider prompt cache (short TTL, typically minutes) keeps phase files warm across iterations — keep iteration cycles tight.
 
 ## Author
 
@@ -124,5 +181,6 @@ MIT. See `LICENSE`.
 
 ## History
 
+- **2026-07-03** — v4 hardening: capability bands + single model table, 16 cross-seat reference fixes, Mode A/B/C contradiction cleanup, loop caps, template dedup + Paired Exchanges slot, mechanical gate (`test/quiz.txt`), guide.html refreshed.
 - **2026-05-10** — Renamed from `council-of-12` to `TrueCouncilOf12`. v3 hardening (E2–E8) applied. Published to GitHub.
 - **2026-04-10** — Original `council-of-12` skill authored (replaced earlier `stakeholder-audit`).

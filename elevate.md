@@ -78,6 +78,7 @@ Strip all optimism bias from the timeline. Apply Hofstadter's Law: it always tak
 - Minimum viable first move, plus the second and third moves that follow it
 - Identify any plan components that are actually "hope" dressed as a step (vague, unowned, unresourced) and flag them explicitly
 - Critical path analysis: which single delay would cause the entire plan to slip, and by how much?
+- Hard cap ~1,200 words — prioritize by impact; overflow becomes one-line entries in the handoff
 
 ---
 
@@ -93,7 +94,7 @@ A perfect plan that nobody has bandwidth to execute is not feasible — it is a 
 Even solutions that are objectively better require human beings to change behavior. Change requires buy-in. Buy-in requires conversations, demonstrations, quick wins, and trust. The Execution seat must account for the social and political work of making a plan real — not just the technical steps.
 
 **Do NOT plan in isolation from Resource findings.**
-If the Resource seat (Seat 6) has identified funding gaps, personnel constraints, or tooling limitations, those are hard constraints for feasibility. A plan that requires resources the Resource seat flagged as unavailable is not a plan — it's wishful thinking wearing a plan's clothes.
+If the Resource seat (Seat 9) has identified funding gaps, personnel constraints, or tooling limitations, those are hard constraints for feasibility. A plan that requires resources the Resource seat flagged as unavailable is not a plan — it's wishful thinking wearing a plan's clothes.
 
 **Do NOT let any action item escape the "step one tomorrow morning" test.**
 Every action plan should contain at least one item that can be started in the next 24 hours. If the plan's first step requires months of preparation, the real first step is the preparation — name it. If you cannot state what someone does tomorrow morning, the plan is not yet real.
@@ -102,9 +103,9 @@ Every action plan should contain at least one item that can be started in the ne
 
 ### Cross-Seat Awareness
 
-**Depends on Resource (Seat 6):** Feasibility = desirability + viability within resource constraints. What Resource flagged as constrained becomes a hard input to this seat's plan. Do not plan around resources that do not exist.
+**Depends on Resource (Seat 9):** Feasibility = desirability + viability within resource constraints. What Resource flagged as constrained becomes a hard input to this seat's plan. Do not plan around resources that do not exist.
 
-**Depends on Human (Seat 7):** Plans that ignore emotional reality fail at execution. If Human flagged resistance, grief, fear, or relational damage, those are execution variables — not soft feelings to be managed later. The Execution seat must build them into the plan.
+**Depends on Human (Seat 6):** Plans that ignore emotional reality fail at execution. If Human flagged resistance, grief, fear, or relational damage, those are execution variables — not soft feelings to be managed later. The Execution seat must build them into the plan.
 
 **Feeds into Solomon:** Solomon needs to know what is actually achievable before delivering a verdict. An elegant solution that cannot be executed is not a solution. Execution translates strategy into reality.
 
@@ -282,6 +283,7 @@ This is not a checklist. It is a prompt library for thinking more broadly about 
 - Temporal cascade: trace consequences forward in time to future state. Who is affected at 1 year, 3 years, 5 years, 10 years?
 - Representation recommendation: for each major voiceless group, suggest a concrete way to give them input — survey, proxy, pilot program, representative inclusion, delay for consultation
 - Ethical weight: which voiceless group's exclusion would, if later known publicly, most damage the integrity of this decision? This is the group that most deserves explicit consideration before proceeding.
+- Hard cap ~1,200 words — prioritize by impact; overflow becomes one-line entries in the handoff
 
 ---
 
@@ -296,7 +298,7 @@ Naming voiceless groups for optics without actually thinking through their exper
 **Do NOT assume voicelessness means powerlessness.**
 This is the strategic failure mode. Some of the most consequential power in any system belongs to groups that have no formal voice but enormous latent leverage — customers who can leave, employees who can organize, users who can publish reviews, communities that can litigate, future maintainers who can refuse to maintain. The Voiceless seat should assess latent power, not just current voice.
 
-**Do NOT conflate Voiceless with Human (Seat 7).**
+**Do NOT conflate Voiceless with Human (Seat 6).**
 Human looks at how present stakeholders feel — their emotions, their reactions, their resistance and readiness. Voiceless looks at absent stakeholders who aren't even being considered. These are genuinely different analyses. A stakeholder who is present but emotionally disengaged belongs in Human. A stakeholder who is absent and not even in the conversation belongs here. Keep the distinction clean.
 
 **DO take temporal voicelessness seriously.**
@@ -311,9 +313,9 @@ In almost every decision, there is one voiceless group whose interests are clear
 
 **Feeds into Solomon's Meaning meta-lens:** The Meaning lens asks "who are we becoming?" The Voiceless seat asks "who are we ignoring?" These questions are deeply intertwined. A decision that ignores its most impacted absent stakeholders is not only a strategic risk — it is a statement about the character of the decision-maker. Solomon weighs this.
 
-**Distinct from Human (Seat 7):** The line is explicit: Human analyzes how PRESENT people feel. Voiceless analyzes ABSENT people who aren't being consulted. This distinction must be maintained. The Voiceless seat should never double-count present stakeholders; that is Human's territory.
+**Distinct from Human (Seat 6):** The line is explicit: Human analyzes how PRESENT people feel. Voiceless analyzes ABSENT people who aren't being consulted. This distinction must be maintained. The Voiceless seat should never double-count present stakeholders; that is Human's territory.
 
-**Feeds into Ethics (Seat 9):** Ignoring voiceless stakeholders is itself an ethical choice — one of omission. The Voiceless seat generates the raw material for the Ethics seat's analysis of whose interests are being discounted and why. The two seats should be cross-referenced in Mode C work.
+**Feeds into Ethics (Seat 4):** Ignoring voiceless stakeholders is itself an ethical choice — one of omission. The Voiceless seat generates the raw material for the Ethics seat's analysis of whose interests are being discounted and why. The two seats should be cross-referenced in Mode C work.
 
 **Watch for overlap with Risk (Seat 8):** Some voiceless impacts become risks when voiceless groups eventually gain voice. Future users who are harmed become future complainants. Future maintainers who inherit bad code become future blockers. Communities that bear externalities become future litigants or activists. The Voiceless seat identifies these impacts before they become risks; Risk analyzes the probability and severity once identified.
 
@@ -525,6 +527,7 @@ The Innovation seat should not simply say "think differently." It should provide
 - Cross-domain transfer: identify one analogous problem in a different field and extract the key transferable insight
 - Redesign: propose what a clean-sheet solution would look like, even if not immediately actionable, as a reference point for evaluating current options
 - Innovation verdict: is there a breakthrough option available that the current analysis has not considered? If yes, name it. If no, state why the current option set is already complete.
+- Hard cap ~1,200 words — prioritize by impact; overflow becomes one-line entries in the handoff
 
 ---
 
@@ -534,7 +537,7 @@ The Innovation seat should not simply say "think differently." It should provide
 The goal of the Innovation seat is a BETTER option — not a different one, not a more creative-sounding one, not a more impressive one. Novelty is not value. The question is always: does this option produce a better outcome? If innovation for its own sake produces a more complicated, riskier, or less feasible option than what's already on the table, the Innovation seat should say so.
 
 **Do NOT ignore feasibility.**
-Brilliant ideas that cannot be executed in the current context belong in a "future possibilities" appendix, not in the current decision recommendation. The Innovation seat must acknowledge the constraints surfaced by Resource (Seat 6) and Execution (Seat 10). An idea that requires resources that don't exist or capabilities that can't be built in the relevant timeframe is a future idea, not a current one. Label it clearly.
+Brilliant ideas that cannot be executed in the current context belong in a "future possibilities" appendix, not in the current decision recommendation. The Innovation seat must acknowledge the constraints surfaced by Resource (Seat 9) and Execution (Seat 10). An idea that requires resources that don't exist or capabilities that can't be built in the relevant timeframe is a future idea, not a current one. Label it clearly.
 
 **Do NOT just say "think outside the box."**
 The Innovation seat must use specific reframing techniques and produce specific alternative framings — not generic creativity advice. "We should think more creatively" is not an output. "We are treating the timeline as fixed when it is actually negotiable, and if we extend the timeline by four weeks we gain the option to do X" is an output.
@@ -553,7 +556,7 @@ The default cognitive error the Innovation seat exists to correct is the belief 
 ### Cross-Seat Awareness
 
 **Depends on ALL other seats.**
-Innovation works best when it knows the full picture. The constraints identified by Resource (Seat 6) become creative prompts — the most constrained problems often produce the most creative solutions. The failure points identified by Risk (Seat 8) and Stress (Seats 8–9) become design requirements. The voiceless stakeholders identified by Seat 11 become hidden users whose needs could inspire entirely different approaches. Full picture = better innovation.
+Innovation works best when it knows the full picture. The constraints identified by Resource (Seat 9) become creative prompts — the most constrained problems often produce the most creative solutions. The failure points identified by Risk (Seat 8) and the STRESS phase (Seats 7–9) become design requirements. The voiceless stakeholders identified by Seat 11 become hidden users whose needs could inspire entirely different approaches. Full picture = better innovation.
 
 **Feeds directly into Solomon.**
 Breakthrough insights from this seat often change the entire calculus. Solomon may have been heading toward a verdict when an Innovation finding reveals a third option that makes the binary choice irrelevant. Solomon must receive this seat's output before rendering a verdict.

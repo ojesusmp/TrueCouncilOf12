@@ -84,7 +84,7 @@ How this seat's questions manifest across domains:
 - The confidence level (how sure we are)
 - The implications (what this means for the analysis)
 - Cross-references to other seats where relevant
-- Aim for 5-8 findings with full evidence chains.
+- Aim for 5-8 findings with full evidence chains. Hard cap ~1,200 words — overflow becomes one-line entries in the handoff.
 
 ---
 
@@ -150,7 +150,7 @@ Knowledge gaps: [What important information is missing]
 
 These 4 questions are asked in EVERY mode (A, B, and C). They form the minimum analysis for this seat.
 
-<!-- SYNC: must match SKILL.md Seat 2 core question + standard questions -->
+<!-- SYNC: Seat 2 has no SKILL.md compact definition (not in Mode A); must match the SKILL.md Quick Reference Card row for Seat 2 -->
 
 1. How did we get here?
 2. Is this a pattern or a one-time event?
@@ -212,7 +212,7 @@ How this seat's questions manifest across domains:
 - How it changes the interpretation of the current situation
 - The trajectory (escalating, stable, or declining)
 - Cross-references to other seats where relevant
-- Aim for 5-8 findings that materially change how the situation should be understood.
+- Aim for 5-8 findings that materially change how the situation should be understood. Hard cap ~1,200 words — overflow becomes one-line entries in the handoff.
 
 ---
 
@@ -350,7 +350,7 @@ How this seat's questions manifest across domains:
 - The leverage point (where to intervene for maximum effect)
 - Second-order effects of intervention
 - Cross-references to other seats where relevant
-- Aim for 5-8 findings with full causal chains.
+- Aim for 5-8 findings with full causal chains. Hard cap ~1,200 words — overflow becomes one-line entries in the handoff.
 
 ---
 

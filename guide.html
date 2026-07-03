@@ -391,7 +391,7 @@
 <div class="hero">
   <h1>The <span>Council of 12</span> &amp; The Solomon Seat</h1>
   <p class="subtitle">A universal 12-lens analysis framework. 12 seats see every angle. Solomon integrates and decides. Works on code reviews, legal filings, career decisions, family conflicts, and everything in between.</p>
-  <span class="version-badge">Skill v1.0</span>
+  <span class="version-badge">TrueCouncilOf12 &mdash; Skill v4</span>
 </div>
 
 <!-- Nav -->
@@ -442,28 +442,33 @@
   <ol class="steps">
     <li>
       <strong>Copy the skill directory</strong>
-      <p>The Council of 12 skill lives at:</p>
-      <pre><code>~/.claude/skills/council-of-12/
+      <p>The TrueCouncilOf12 skill lives at:</p>
+      <pre><code>~/.claude/skills/TrueCouncilOf12/
 ├── SKILL.md              # Orchestrator + Mode A (always loaded)
 ├── ground.md             # Seats 1-3: Truth, Context, Systems
 ├── bound.md              # Seats 4-6: Ethics, Rules, Human
 ├── stress.md             # Seats 7-9: Adversarial, Risk, Resource
 ├── elevate.md            # Seats 10-12: Execution, Voiceless, Innovation
-└── templates/
-    └── report.md         # Mode B/C output templates</code></pre>
-      <p>Place all files in <code>~/.claude/skills/council-of-12/</code>. On Windows this resolves to <code>C:\Users\&lt;you&gt;\.claude\skills\council-of-12\</code>.</p>
+├── templates/
+│   └── report.md         # Mode B/C output templates
+├── test/
+│   └── quiz.txt          # Mechanical regression gate (15 questions)
+├── README.md             # Docs + gate expected answers
+├── CHANGELOG.md          # Hardening history and rollback map
+└── guide.html            # This guide</code></pre>
+      <p>Place all files in <code>~/.claude/skills/TrueCouncilOf12/</code>. On Windows this resolves to <code>C:\Users\&lt;you&gt;\.claude\skills\TrueCouncilOf12\</code>.</p>
     </li>
     <li>
       <strong>Verify the skill is discovered</strong>
       <p>Start a new Claude Code session and type:</p>
-      <pre><code>/council-of-12 test</code></pre>
+      <pre><code>/TrueCouncilOf12 test</code></pre>
       <p>You should see Solomon triage activate. You can also use <code>/solomon</code> or <code>/c12</code> as aliases.</p>
     </li>
   </ol>
 
   <div class="callout tip">
     <strong>Tip</strong>
-    The skill auto-discovers through Claude Code's skill system. No configuration file changes needed. If <code>/council-of-12</code> doesn't work, ensure the directory is at <code>~/.claude/skills/</code>.
+    The skill auto-discovers through Claude Code's skill system. No configuration file changes needed. If <code>/TrueCouncilOf12</code> doesn't work, ensure the directory is at <code>~/.claude/skills/</code>. Legacy aliases still work: <code>council</code>, <code>solomon</code>, <code>c12</code>, <code>council-of-12</code>, <code>true-council</code>, <code>tco12</code>.
   </div>
 </section>
 
@@ -555,8 +560,8 @@
 
 <!-- Solomon -->
 <section id="solomon">
-  <h2>Solomon — The 13th Seat</h2>
-  <p>Solomon is both the <strong>gatekeeper</strong> (triage) and the <strong>judge</strong> (synthesis). He bookends the process: opens it by choosing the mode, closes it by delivering the verdict.</p>
+  <h2>Solomon — The Coordinator</h2>
+  <p>Solomon is <strong>not a thirteenth lens</strong> — he is the integrator who sits above the 12 seats. He is both the <strong>gatekeeper</strong> (triage) and the <strong>judge</strong> (synthesis): he opens the process by choosing the mode and closes it by delivering the verdict — always one of <code>PROCEED</code>, <code>REVISE — needs: [X]</code>, or <code>STOP</code>. Never "it depends."</p>
 
   <h3>Solomon's Meta-Lenses</h3>
   <p>Three perspectives Solomon applies during synthesis that require seeing the full picture:</p>
@@ -590,6 +595,21 @@
     <strong>The Rule</strong>
     Solomon always names the tradeoff. "We sacrifice X to protect Y because Z." Never "we need to balance multiple factors." A verdict without a named sacrifice is not a verdict.
   </div>
+
+  <h3>Hardened Mechanics (v3 &rarr; v4)</h3>
+  <table>
+    <thead><tr><th>Mechanism</th><th>What it guarantees</th></tr></thead>
+    <tbody>
+      <tr><td><code>LOAD-BEARING FACT</code> tag (Seat 1)</td><td>Every analysis names the single fact it rests on — and what collapses if it's wrong. <code>NONE</code> caps the verdict at REVISE.</td></tr>
+      <tr><td>Three-label verdict</td><td><code>PROCEED</code> / <code>REVISE — needs: [X]</code> / <code>STOP</code>. No DEFER, no hedging.</td></tr>
+      <tr><td>Cheapest $0/72h action (STRESS seats)</td><td>Every STRESS finding closes with a real-world test you can run this week for free. Worry without a test is not analysis.</td></tr>
+      <tr><td>Empty-Seat Permission</td><td><code>NO FINDING — would have flagged if: [X]</code> is valid output; manufactured findings get discounted.</td></tr>
+      <tr><td>Synthesis &ge; 30% (by word count)</td><td>Solomon's verdict never shrinks to a paragraph under pages of seat output.</td></tr>
+      <tr><td>Paired Exchanges (Mode C)</td><td>Seat 7 attacks the load-bearing fact (vs Seat 1) and the verdict's ethics (vs Seat 4) before Solomon rules. ~100-word caps.</td></tr>
+      <tr><td>Capability bands + unknown-model fallback</td><td>The skill runs correctly on any model, including ones released after this file was written.</td></tr>
+      <tr><td>Loop caps everywhere</td><td>One seat re-run, one consensus reconsideration, one re-triage — nothing in the Council can loop unbounded.</td></tr>
+    </tbody>
+  </table>
 </section>
 
 <!-- Modes -->
@@ -627,18 +647,18 @@
     </div>
   </div>
 
-  <h3>Model Compatibility</h3>
+  <h3>Model Compatibility (capability bands)</h3>
   <table>
     <thead>
-      <tr><th>Model</th><th>Supported Modes</th><th>Default</th></tr>
+      <tr><th>Band</th><th>Supported Modes</th><th>Default</th></tr>
     </thead>
     <tbody>
-      <tr><td>Opus</td><td>A, B, C</td><td>B</td></tr>
-      <tr><td>Sonnet</td><td>A, B</td><td>B</td></tr>
-      <tr><td>Haiku</td><td>A only</td><td>A</td></tr>
+      <tr><td>FRONTIER (top-tier reasoning)</td><td>A, B, C</td><td>B</td></tr>
+      <tr><td>MID (strong general models)</td><td>A, B</td><td>B</td></tr>
+      <tr><td>COMPACT (small/fast models)</td><td>A only</td><td>A</td></tr>
     </tbody>
   </table>
-  <p>If Solomon recommends a mode your model doesn't support, it auto-downgrades with an explanation.</p>
+  <p>Model names map to bands in exactly one place: the <strong>Model &rarr; Band Table</strong> in <code>SKILL.md</code>. Unknown model? The skill assumes MID, says so, and proceeds. If Solomon recommends a mode your model's band doesn't support, it auto-downgrades with an explanation.</p>
 </section>
 
 <!-- Usage -->
@@ -646,7 +666,7 @@
   <h2>Usage</h2>
 
   <h3>Slash Commands</h3>
-  <pre><code>/council-of-12 &lt;describe your situation&gt;
+  <pre><code>/TrueCouncilOf12 &lt;describe your situation&gt;
 /solomon &lt;describe your situation&gt;
 /c12 &lt;describe your situation&gt;</code></pre>
 
@@ -662,7 +682,7 @@
   </table>
 
   <h3>Activation Triggers</h3>
-  <p>The skill also auto-activates on these phrases:</p>
+  <p>The Council <strong>never auto-fires</strong> — it convenes only on an explicit ask. These phrases count as explicit asks when you direct them at the current work:</p>
   <div class="card-grid">
     <div class="card">
       <h4>Inherited Triggers</h4>
@@ -674,13 +694,14 @@
     </div>
   </div>
 
-  <h3>Auto-Trigger</h3>
-  <p>The skill leans toward auto-activating when it detects:</p>
+  <h3>Escalation Suggestions</h3>
+  <p>Once a session is already running, Solomon may recommend a deeper mode (and waits for your confirmation) when he detects:</p>
   <ul style="margin-left: 20px; margin-bottom: 16px;">
     <li>High-stakes deliverables (legal, financial, public-facing)</li>
     <li>Deliverables being handed off to someone else</li>
     <li>Work you'll be held accountable for</li>
   </ul>
+  <p>Outside a session, Claude may at most mention in one sentence that the Council is available — never convene it unasked.</p>
 
   <h3>The Execution Pipeline</h3>
   <div class="pipeline">
@@ -729,7 +750,7 @@ Should I accept, negotiate, or decline?</code></pre>
   </div>
 
   <h3>Deliverable Review (Mode B)</h3>
-  <pre><code>/council-of-12 Review this deployment guide before I send it to the client.
+  <pre><code>/TrueCouncilOf12 Review this deployment guide before I send it to the client.
 [paste or reference the deliverable]</code></pre>
   <div class="callout tip">
     <strong>What you get</strong>
@@ -835,9 +856,9 @@ any of their explanations. What's actually happening?</code></pre>
     <tbody>
       <tr>
         <td><code>SKILL.md</code></td>
-        <td>~1,500 lines</td>
+        <td>~950 lines</td>
         <td>Always (auto-loaded)</td>
-        <td>Orchestrator, Solomon protocol, Mode A seats, triage, synthesis</td>
+        <td>Orchestrator, Solomon protocol, Mode A seats, triage, synthesis, Model &rarr; Band Table</td>
       </tr>
       <tr>
         <td><code>ground.md</code></td>
@@ -865,9 +886,15 @@ any of their explanations. What's actually happening?</code></pre>
       </tr>
       <tr>
         <td><code>templates/report.md</code></td>
-        <td>~620 lines</td>
+        <td>~420 lines</td>
         <td>Mode B/C (via Read)</td>
-        <td>Output format templates for Mode B and Mode C reports</td>
+        <td>Mode B template + Mode C delta (Paired Exchanges, extended sections, extended verdict)</td>
+      </tr>
+      <tr>
+        <td><code>test/quiz.txt</code></td>
+        <td>15 questions</td>
+        <td>Manual gate runs only</td>
+        <td>Regression quiz; expected answers live in README.md</td>
       </tr>
     </tbody>
   </table>
@@ -886,8 +913,12 @@ any of their explanations. What's actually happening?</code></pre>
     <thead><tr><th>Problem</th><th>Solution</th></tr></thead>
     <tbody>
       <tr>
-        <td><code>/council-of-12</code> not found</td>
-        <td>Ensure files are at <code>~/.claude/skills/council-of-12/SKILL.md</code>. Restart Claude Code session.</td>
+        <td><code>/TrueCouncilOf12</code> not found</td>
+        <td>Ensure files are at <code>~/.claude/skills/TrueCouncilOf12/SKILL.md</code>. Restart Claude Code session.</td>
+      </tr>
+      <tr>
+        <td>Running on a model the skill doesn't know</td>
+        <td>By design the skill assumes MID band (Modes A/B), says so in the triage line, and proceeds. To grant full Mode C, add the model to the Model &rarr; Band Table in <code>SKILL.md</code>.</td>
       </tr>
       <tr>
         <td>Mode B/C says "cannot read phase file"</td>
@@ -906,8 +937,8 @@ any of their explanations. What's actually happening?</code></pre>
         <td>Mode A should finish in &lt;60s. If it's loading phase files, something is wrong — Mode A should never use Read calls. Check that SKILL.md has the "DO NOT use Read tool" guardrail.</td>
       </tr>
       <tr>
-        <td>Haiku model gives poor results</td>
-        <td>Haiku supports Mode A only. For Mode B/C quality, switch to Sonnet or Opus.</td>
+        <td>Compact model gives poor results</td>
+        <td>COMPACT-band models support Mode A only. For Mode B/C quality, switch to a MID- or FRONTIER-band model (see the Model &rarr; Band Table in SKILL.md).</td>
       </tr>
     </tbody>
   </table>

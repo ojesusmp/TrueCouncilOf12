@@ -1,6 +1,6 @@
 ---
 name: TrueCouncilOf12
-description: "Universal 12-lens analysis with Solomon coordinator. Invoke only when the user asks for the council ('council of 12', 'TrueCouncilOf12', 'c12', 'solomon'); do not auto-fire."
+description: "Universal 12-lens analysis with Solomon coordinator. Invoke only when the user asks for the council ('council of 12', 'TrueCouncilOf12', 'c12', 'solomon'); do not auto-fire. The generic default for unnamed decisions is decision-council, not this."
 aliases: [council, solomon, c12, council-of-12, true-council, tco12]
 author: "Orlando Molina - TruePointAgents.com"
 argument-hint: "<situation, deliverable, decision, or problem to analyze>"
@@ -873,18 +873,24 @@ unavailable. Only a phase-file failure triggers the Mode A fallback offer.
 | **MID** (strong general models) | A, B | B | Mode B is the sweet spot. Mode C risks degraded synthesis — downgrade per Conflict Resolution. |
 | **COMPACT** (small/fast models) | A only | A | Essential Five only. Triage must not present Mode B/C as options on a COMPACT model. |
 
-### Model → Band Table
+### Band Resolution
 
-**This table is the ONLY place model names appear in this skill. When the model lineup changes, update this table and nothing else.**
+**No model names live in this skill.** The running model's band resolves through
+model-effort-router's tier table -- the ONLY file on this machine that maps model
+names to tiers. When the lineup changes, that file's one-column edit updates this
+skill automatically; nothing here is touched.
 
-| Model | Band |
-|-------|------|
-| Fable 5 (`claude-fable-5`) | FRONTIER |
-| Opus 4.8 (`claude-opus-4-8`) | FRONTIER |
-| Sonnet 5 (`claude-sonnet-5`) | MID |
-| Haiku 4.5 (`claude-haiku-4-5-20251001`) | COMPACT |
+| Band | Router tier |
+|------|-------------|
+| **FRONTIER** | T3 - T4 (the router's `opus` / `fable` aliases) |
+| **MID** | T2 (the router's `sonnet` alias) |
+| **COMPACT** | T1 (the router's `haiku` alias) |
 
-**Unknown-model rule:** if the running model is not in the table (newer than this file, renamed, or unrecognized), do not stall, refuse, or guess silently. Assume **MID** band, state the assumption in one triage line ("model not in band table — assuming MID"), and proceed. If the model verifiably self-identifies as a top-tier/frontier model, FRONTIER may be assumed instead — say so explicitly.
+**Unknown-model rule:** if the running model resolves to no tier (newer than the
+router's table, renamed, or unrecognized), do not stall, refuse, or guess silently.
+Assume **MID** band, state the assumption in one triage line ("model not in router
+table -- assuming MID"), and proceed. If the model verifiably self-identifies as a
+top-tier/frontier model, FRONTIER may be assumed instead -- say so explicitly.
 
 **Execution notes:**
 - **Extended thinking (FRONTIER band):** Engage for Mode C deliberation. The synthesis weight rule (≥30% of total output) and Paired Exchanges benefit from extra reasoning budget. Not needed for Mode A.
